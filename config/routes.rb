@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'nutritions/index'
-  get 'nutritions/show'
-  get 'foods/index'
-  get 'foods/show'
   devise_for :users
   root to: "pages#home"
   
