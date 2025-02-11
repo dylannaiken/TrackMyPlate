@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_08_133807) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_11_153045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_08_133807) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "daily_proteins"
+    t.integer "daily_carbs"
+    t.integer "daily_fats"
     t.index ["user_id"], name: "index_daily_goals_on_user_id"
   end
 
@@ -46,14 +49,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_08_133807) do
     t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
-  create_table "meal_iterms", force: :cascade do |t|
+  create_table "meal_items", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "meal_id", null: false
     t.bigint "food_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_meal_iterms_on_food_id"
-    t.index ["meal_id"], name: "index_meal_iterms_on_meal_id"
+    t.index ["food_id"], name: "index_meal_items_on_food_id"
+    t.index ["meal_id"], name: "index_meal_items_on_meal_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -82,6 +85,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_08_133807) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fullname"
+    t.integer "age"
+    t.integer "weight"
+    t.integer "height"
+    t.integer "goal"
+    t.integer "goal_weight"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -90,7 +99,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_08_133807) do
   add_foreign_key "days", "users"
   add_foreign_key "foods", "nutritions"
   add_foreign_key "foods", "users"
-  add_foreign_key "meal_iterms", "foods"
-  add_foreign_key "meal_iterms", "meals"
+  add_foreign_key "meal_items", "foods"
+  add_foreign_key "meal_items", "meals"
   add_foreign_key "meals", "days"
 end
