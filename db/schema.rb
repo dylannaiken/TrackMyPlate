@@ -67,7 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_11_153045) do
     t.datetime "updated_at", null: false
     t.index ["day_id"], name: "index_meals_on_day_id"
   end
-
+à
   create_table "nutritions", force: :cascade do |t|
     t.integer "calories"
     t.integer "proteins"

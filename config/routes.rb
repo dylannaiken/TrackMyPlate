@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'meals/index'
-  get 'meals/new'
-  get 'meals/edit'
-  get 'meals/show'
-  get 'meals/destroy'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
