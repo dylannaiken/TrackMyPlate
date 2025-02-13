@@ -1,0 +1,10 @@
+<h1>Liste des aliments</h1>
+<ul>
+  <% @foods.each do |food| %>
+    <li>
+      <strong><%= food.name %></strong> -
+      <%= food.serving_size %> <%= food.serving_unit %>
+      (<a href="<%= food_path(food) %>">Voir détails</a>)
+    </li>
+  <% end %>
+</ul>

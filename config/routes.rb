@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'daily_logs/index'
-  get 'daily_logs/show'
-  get 'daily_logs/new'
-  get 'daily_logs/create'
-  get 'daily_logs/edit'
-  get 'daily_logs/update'
-  get 'daily_logs/destroy'
   devise_for :users
   root to: "pages#home"
 
