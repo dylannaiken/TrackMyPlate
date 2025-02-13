@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_13_153651) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_13_161830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_13_153651) do
     t.float "remaining_calories"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "remaining_proteins"
+    t.integer "remaining_carbs"
+    t.integer "remaining_fats"
+    t.integer "remaining_water"
     t.index ["user_id", "log_date"], name: "index_daily_logs_on_user_id_and_log_date"
     t.index ["user_id"], name: "index_daily_logs_on_user_id"
   end
@@ -47,6 +51,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_13_153651) do
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "target_water"
     t.index ["user_id", "is_active"], name: "index_goals_on_user_id_and_is_active"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
@@ -88,6 +93,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_13_153651) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fullname"
+    t.integer "age"
+    t.integer "weight"
+    t.integer "height"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
