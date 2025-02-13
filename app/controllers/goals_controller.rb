@@ -43,5 +43,5 @@ private
 
 
 def goal_params
-  params.require(:goal).permit(:goal_type, :target_weight, :daily_calorie_target, :protein_target, :carbs_target, :fat_target)
+  params.require(:goal).permit(:goal_type, :target_weight, :daily_calorie_target, :protein_target, :carbs_target, :fat_target, :target_water)
 end
