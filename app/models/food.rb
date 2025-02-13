@@ -1,5 +1,4 @@
 class Food < ApplicationRecord
-  belongs_to :nutrition
-  belongs_to :user
-  has_many :meal_items
+  belongs_to :meal
+  has_one :nutrition, dependent: :destroy
 end

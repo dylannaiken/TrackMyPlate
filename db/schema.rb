@@ -10,71 +10,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_11_153045) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_13_153651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "daily_goals", force: :cascade do |t|
-    t.integer "daily_calories"
+  create_table "daily_logs", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.date "log_date"
+    t.float "remaining_calories"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "daily_proteins"
-    t.integer "daily_carbs"
-    t.integer "daily_fats"
-    t.index ["user_id"], name: "index_daily_goals_on_user_id"
-  end
-
-  create_table "days", force: :cascade do |t|
-    t.date "date"
-    t.integer "total_calories"
-    t.integer "total_proteins"
-    t.integer "total_carbs"
-    t.integer "total_fats"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_days_on_user_id"
+    t.index ["user_id", "log_date"], name: "index_daily_logs_on_user_id_and_log_date"
+    t.index ["user_id"], name: "index_daily_logs_on_user_id"
   end
 
   create_table "foods", force: :cascade do |t|
-    t.string "name"
-    t.integer "food_group"
-    t.text "description"
-    t.bigint "nutrition_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "meal_id", null: false
+    t.string "food_name"
+    t.float "serving_size"
+    t.string "serving_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["nutrition_id"], name: "index_foods_on_nutrition_id"
-    t.index ["user_id"], name: "index_foods_on_user_id"
+    t.index ["meal_id"], name: "index_foods_on_meal_id"
   end
 
-  create_table "meal_items", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "meal_id", null: false
-    t.bigint "food_id", null: false
+  create_table "goals", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "goal_type"
+    t.float "target_weight"
+    t.integer "daily_calorie_target"
+    t.float "protein_target"
+    t.float "carbs_target"
+    t.float "fat_target"
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_meal_items_on_food_id"
-    t.index ["meal_id"], name: "index_meal_items_on_meal_id"
+    t.index ["user_id", "is_active"], name: "index_goals_on_user_id_and_is_active"
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "meals", force: :cascade do |t|
-    t.string "name"
+    t.bigint "user_id", null: false
+    t.bigint "daily_log_id", null: false
     t.integer "meal_type"
-    t.bigint "day_id", null: false
+    t.datetime "eaten_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_meals_on_day_id"
+    t.index ["daily_log_id"], name: "index_meals_on_daily_log_id"
+    t.index ["eaten_at"], name: "index_meals_on_eaten_at"
+    t.index ["user_id", "daily_log_id"], name: "index_meals_on_user_id_and_daily_log_id"
+    t.index ["user_id"], name: "index_meals_on_user_id"
   end
-à
+
   create_table "nutritions", force: :cascade do |t|
-    t.integer "calories"
-    t.integer "proteins"
-    t.integer "carbs"
-    t.integer "fats"
+    t.bigint "food_id", null: false
+    t.float "calories"
+    t.float "protein"
+    t.float "carbs"
+    t.float "fat"
+    t.float "fiber"
+    t.float "sugar"
+    t.float "sodium"
+    t.float "cholesterol"
+    t.json "additional_nutrients"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_nutritions_on_food_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,21 +88,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_11_153045) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "fullname"
-    t.integer "age"
-    t.integer "weight"
-    t.integer "height"
-    t.integer "goal"
-    t.integer "goal_weight"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "daily_goals", "users"
-  add_foreign_key "days", "users"
-  add_foreign_key "foods", "nutritions"
-  add_foreign_key "foods", "users"
-  add_foreign_key "meal_items", "foods"
-  add_foreign_key "meal_items", "meals"
-  add_foreign_key "meals", "days"
+  add_foreign_key "daily_logs", "users"
+  add_foreign_key "foods", "meals"
+  add_foreign_key "goals", "users"
+  add_foreign_key "meals", "daily_logs"
+  add_foreign_key "meals", "users"
+  add_foreign_key "nutritions", "foods"
 end

@@ -1,4 +1,5 @@
 class Meal < ApplicationRecord
-  belongs_to :day
-  has_many :meal_items
+  belongs_to :user
+  belongs_to :daily_log
+  has_many :food, dependent: :destroy
 end
