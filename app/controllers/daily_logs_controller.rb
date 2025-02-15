@@ -35,7 +35,7 @@ class DailyLogsController < ApplicationController
 
   private
 
-  def set_daily_log
+  def set_daily_logs
     @daily_log = current_user.daily_logs.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Daily log not found' }, status: :not_found
