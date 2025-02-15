@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Générer une recette avec AI</h1>
+
+<%= form_with url: ai_generate_path, method: :post, local: true do |form| %>
+  <div>
+    <%= form.label :prompt, "Entrez une description de la recette :" %>
+    <%= form.text_area :prompt, rows: 4 %>
+  </div>
+
+  <%= form.submit "Générer" %>
+<% end %>
+
+<hr>
+
+<h1>Recettes</h1>
+
+<div id="recipes">
+  <% @recipes.each do |recipe| %>
+    <div class="recipe">
+      <p><strong><%= recipe.name %></strong></p>
+      <p><%= recipe.ingredients %></p>
+
+      <p>
+        <%= link_to "Show this recipe", recipe %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Ajouter une nouvelle recette", new_recipe_path %>

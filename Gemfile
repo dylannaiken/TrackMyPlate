@@ -30,6 +30,8 @@ gem "cloudinary"
 
 gem "ostruct"
 
+gem "ruby-openai"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
