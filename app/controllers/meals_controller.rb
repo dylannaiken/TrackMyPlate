@@ -1,15 +1,20 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: %i[show edit update destroy]
+  before_action :set_daily_log, only: %i[new create]
 
   def index
     @meals = Meal.all
   end
 
   def show
+    @meal = Meal.find(params[:id])
+    @food = Food.new
+    @foods = @meal.foods
   end
 
   def new
-    @meal = Meal.new
+    @daily_log = current_user.daily_logs.find(params[:daily_log_id])
+    @meal = @daily_log.meals.new
   end
 
   def create
@@ -39,8 +44,12 @@ class MealsController < ApplicationController
 
   private
 
+  def set_daily_log
+    @daily_log = current_user.daily_logs.find(params[:daily_log_id])
+  end
+
   def set_meal
-    @meal = Meal.find(params[:id])
+    @meal = current_user.meals.find(params[:id])
   end
 
   def meal_params

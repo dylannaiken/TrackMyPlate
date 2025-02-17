@@ -4,11 +4,11 @@ class DailyLogsController < ApplicationController
 
   def index
     @daily_logs = current_user.daily_logs.order(log_date: :desc)
-    render json: @daily_logs
   end
 
   def show
-    render json: @daily_log
+    @daily_log = DailyLog.find(params[:id])
+    @meal = Meal.new
   end
 
   def create
