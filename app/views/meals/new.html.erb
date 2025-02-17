@@ -1,2 +1,10 @@
-<h1>Meals#new</h1>
-<p>Find me in app/views/meals/new.html.erb</p>
+<h1>Add a meal</h1>
+
+<%= simple_form_for [@daily_log, @meal] do |f| %>
+  <%= f.input :meal_type %>
+  <%= f.input :eaten_at %>
+  <%= f.button :submit %>
+<% end %>
+
+
+<%= link_to "Add a food", new_daily_log_meal_food_path(@meal.daily_log, @daily_log, @food) %>

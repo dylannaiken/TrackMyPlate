@@ -1,2 +1,12 @@
-<h1>DailyLogs#show</h1>
-<p>Find me in app/views/daily_logs/show.html.erb</p>
+<h1>Today</h1>
+
+
+<p>log_date : <%= @daily_log.log_date %></p>
+<p>remaining_calories : <%= @daily_log.remaining_calories %></p>
+<p>remaining_proteins :<%= @daily_log.remaining_proteins %></p>
+<p>remaining_carbs : <%= @daily_log.remaining_carbs %></p>
+<p>remaining_fats : <%= @daily_log.remaining_fats %></p>
+<p>remaining_water :<%= @daily_log.remaining_water %></p>
+
+
+<%= link_to "Add a meal", new_daily_log_meal_path(@daily_log.id, @meal) %>

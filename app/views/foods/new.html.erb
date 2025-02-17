@@ -1,0 +1,8 @@
+<h1>Add a food</h1>
+
+<%= simple_form_for [@daily_log, @meal.daily_log, @food] do |f| %>
+  <%= f.input :food_name %>
+  <%= f.input :serving_size %>
+  <%= f.input :serving_unit %>
+  <%= f.button :submit %>
+<% end %>
