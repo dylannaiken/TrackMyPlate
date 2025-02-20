@@ -42,6 +42,6 @@ class DailyLogsController < ApplicationController
   end
 
   def daily_log_params
-    params.require(:daily_log).permit(:log_date, :remaining_calories, :remaining_proteins, :remaining_carbs, :remaining_fats, :remaining_water)
+    params.require(:daily_log).permit(:user_id, :log_date, :remaining_calories, :remaining_proteins, :remaining_carbs, :remaining_fats, :remaining_water)
   end
 end
