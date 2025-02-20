@@ -23,7 +23,7 @@ class MealsController < ApplicationController
     @meal = @daily_log.meals.new(meal_params)
     @meal.user_id = current_user.id
     if @meal.save
-      redirect_to new_daily_log_meal_food_path(@meal.daily_log, @daily_log, @food), notice: 'Meal was successfully created.'
+      redirect_to new_daily_log_meal_food_path(@meal.daily_log, @meal, @food), notice: 'Meal was successfully created.'
     else
       Rails.logger.debug "Parameters received: #{@meal.errors.full_messages}"
       render :new
