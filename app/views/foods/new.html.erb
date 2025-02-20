@@ -1,6 +1,6 @@
 <h1>Add a food</h1>
 
-<%= simple_form_for [@daily_log, @meal.daily_log, @food] do |f| %>
+<%= simple_form_for [@daily_log, @meal, @food], url: daily_log_meal_foods_path(@daily_log, @meal) do |f| %>
   <%= f.input :food_name %>
   <%= f.input :serving_size %>
   <%= f.input :serving_unit %>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   resources :users do
-    resources :profile
+    resources :profiles
   end
 
   resources :goals
@@ -21,6 +21,4 @@ Rails.application.routes.draw do
       resources :foods
     end
   end
-
-  resources :nutritions
 end

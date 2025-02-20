@@ -1,13 +1,11 @@
 class DailyLogsController < ApplicationController
-  before_action :set_daily_log, only: %i[show update destroy]
+  before_action :set_user
   before_action :authenticate_user!
-
-  def index
-    @daily_logs = current_user.daily_logs.order(log_date: :desc)
-  end
+  before_action :set_daily_log, only: %i[show update destroy]
 
   def show
     @daily_log = DailyLog.find(params[:id])
+    @user = current_user
     @meal = Meal.new
   end
 
@@ -35,10 +33,12 @@ class DailyLogsController < ApplicationController
 
   private
 
+  def set_user
+    @user = current_user
+  end
+
   def set_daily_log
     @daily_log = current_user.daily_logs.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: 'Daily log not found' }, status: :not_found
   end
 
   def daily_log_params
