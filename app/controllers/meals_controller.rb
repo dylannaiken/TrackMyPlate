@@ -1,24 +1,25 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: %i[show edit update destroy]
-  before_action :set_daily_log, only: %i[new create]
+  before_action :set_daily_log, only: %i[new create show]
+  before_action :authenticate_user!
 
   def index
     @meals = Meal.all
   end
 
   def show
-    @meal = Meal.find(params[:id])
     @food = Food.new
     @foods = @meal.foods
   end
 
   def new
-    @daily_log = current_user.daily_logs.find(params[:daily_log_id])
+    @user = current_user
     @meal = @daily_log.meals.new
   end
 
   def create
-    @meal = Meal.new(meal_params)
+    Rails.logger.debug "Parameters received: #{params.inspect}"
+    @meal = @daily_log.meals.new(meal_params)
     if @meal.save
       redirect_to @meal, notice: 'Meal was successfully created.'
     else
@@ -46,10 +47,14 @@ class MealsController < ApplicationController
 
   def set_daily_log
     @daily_log = current_user.daily_logs.find(params[:daily_log_id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to daily_logs_path, alert: "DailyLog not found or not authorized."
   end
 
   def set_meal
     @meal = current_user.meals.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to daily_logs_path, alert: "Meal not found or not authorized."
   end
 
   def meal_params

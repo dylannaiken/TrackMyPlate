@@ -14,9 +14,9 @@ class Food < ApplicationRecord
   #   teaspoons: 'teaspoons'
   # }
 
-  private 
+  private
 
   def update_daily_log_remaining_calories
     meal.daily_log.update_remaining_calories
-  end 
+  end
 end

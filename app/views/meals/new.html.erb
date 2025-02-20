@@ -1,10 +1,10 @@
+<% @user = current_user %>
 <h1>Add a meal</h1>
 
 <%= simple_form_for [@daily_log, @meal] do |f| %>
-  <%= f.input :meal_type %>
+  <%= f.input :meal_type, collection: Meal.meal_types.keys.map { |keys| [keys.humanize, keys] }, prompt: "Sélectionnez..." %>
   <%= f.input :eaten_at %>
   <%= f.button :submit %>
 <% end %>
-
 
 <%= link_to "Add a food", new_daily_log_meal_food_path(@meal.daily_log, @daily_log, @food) %>

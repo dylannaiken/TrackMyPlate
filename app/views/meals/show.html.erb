@@ -1,2 +1,18 @@
-<h1>Meals#show</h1>
-<p>Find me in app/views/meals/show.html.erb</p>
+<h1>Meal Details</h1>
+
+<p>Meal Type: <%= @meal.meal_type %></p>
+<p>Eaten At: <%= @meal.eaten_at %></p>
+
+<h2>Foods in this Meal</h2>
+<ul>
+  <% @meal.foods.each do |food| %>
+    <li>
+      <%= food.food_name %> -
+      <%= food.serving_size %> <%= food.serving_unit %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a food", new_daily_log_meal_food_path(@daily_log, @meal) %>
+
+<%= link_to "Return to homepage", daily_log_path(@daily_log) %>

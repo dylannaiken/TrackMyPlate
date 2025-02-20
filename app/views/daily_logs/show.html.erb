@@ -8,5 +8,13 @@
 <p>remaining_fats : <%= @daily_log.remaining_fats %></p>
 <p>remaining_water :<%= @daily_log.remaining_water %></p>
 
+<h2>Today's meal</h2>
+<ul>
+  <% @daily_log.meals.each do |meal| %>
+    <li>
+      <%= link_to "#{meal.meal_type}", daily_log_meal_path(@daily_log.id, meal.id) %>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to "Add a meal", new_daily_log_meal_path(@daily_log.id, @meal) %>

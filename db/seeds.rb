@@ -8,6 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 # Création d'utilisateurs
+Food.destroy_all
+Meal.destroy_all
+DailyLog.destroy_all
+Goal.destroy_all
+User.destroy_all
 
 puts "Creating users..."
 user1 = User.find_or_create_by!(email: "dylan@admin.com") { |u| u.password = "password" }
@@ -26,6 +31,7 @@ puts "Creating goals..."
     goal.fat_target = 80
     goal.start_date = Date.today
     goal.end_date = Date.today + 30
+    goal.target_water = 7
     goal.is_active = true
   end
 end
@@ -34,7 +40,11 @@ puts "Creating daily logs..."
 daily_logs = {}
 [ user1, user2, user3, user4 ].each do |user|
   daily_logs[user] = DailyLog.find_or_create_by!(user: user, log_date: Date.today) do |log|
-    log.remaining_calories = 500
+    log.remaining_calories = 2500
+    log.remaining_proteins = 160
+    log.remaining_carbs = 80
+    log.remaining_fats = 60
+    log.remaining_water = 7
   end
 end
 
