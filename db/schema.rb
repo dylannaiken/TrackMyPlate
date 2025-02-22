@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_18_151517) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_22_120249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,8 +91,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_18_151517) do
     t.datetime "eaten_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "goal_id"
     t.index ["daily_log_id"], name: "index_meals_on_daily_log_id"
     t.index ["eaten_at"], name: "index_meals_on_eaten_at"
+    t.index ["goal_id"], name: "index_meals_on_goal_id"
     t.index ["user_id", "daily_log_id"], name: "index_meals_on_user_id_and_daily_log_id"
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
@@ -142,6 +144,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_18_151517) do
   add_foreign_key "foods", "meals"
   add_foreign_key "goals", "users"
   add_foreign_key "meals", "daily_logs"
+  add_foreign_key "meals", "goals"
   add_foreign_key "meals", "users"
   add_foreign_key "nutritions", "foods"
 end
