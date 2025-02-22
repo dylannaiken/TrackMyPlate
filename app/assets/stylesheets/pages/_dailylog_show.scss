@@ -1,0 +1,224 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f5f7;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 5px;
+}
+
+header p {
+  color: #777;
+  font-size: 1em;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #333;
+}
+
+.calories {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.2em;
+  font-weight: 300;
+  color: #555;
+}
+
+.calories h2 {
+margin-left: 10px;
+}
+
+
+.macros {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.macro {
+  text-align: left;
+  flex: 1;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+}
+
+.macro img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.macro p {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 5px;
+}
+
+.meals {
+  margin-top: 40px;
+}
+
+.meal {
+  display: flex;
+  background: #fff;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  align-items: center;
+}
+
+.meal-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.meal-info {
+  flex: 1;
+  margin-left: 0;
+}
+
+.meal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.meal-header h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.meal-time {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.meal-calories {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.meal-macros {
+  display: flex;
+  gap: 15px;
+}
+
+.meal-macros p {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: #555;
+  margin: 0;
+}
+
+.meal-macros img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.icons {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.add-meal {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: #4a90e2;
+  color: white;
+  font-size: 2em;
+  border-radius: 50%;
+  border: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.5);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.add-meal:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(74, 144, 226, 0.7);
+}
+
+.add-meal a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  line-height: 60px;
+  text-align: center;
+}
+
+.calories img {
+width: 30px;
+height: 30px;
+}
+
+header img {
+width: 40px;
+height: 40px;
+}
+.progress-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+svg {
+  transform: rotate(-90deg);
+}
+circle {
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+}

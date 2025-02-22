@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_profile, only: %i[show]
+  before_action :set_profile, only: %i[show edit]
 
   def show
     @daily_log = DailyLog.find_by_user_id(current_user.id)
@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @daily_log = DailyLog.find_by_user_id(current_user.id)
     @goal = @user.goal
   end
 

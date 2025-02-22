@@ -15,7 +15,7 @@
               <%= link_to "Home", daily_log_path(@current_daily_log), class: "nav-link" %>
             </li>
           <li class="nav-item">
-            <%= link_to "Profile", user_profile_path(current_user.id, current_user.id), class: "nav-link" %>
+            <%= link_to "Profile", edit_user_profile_path(current_user.id, current_user.id), class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Stats", goal_path(current_user), class: "nav-link" %>
