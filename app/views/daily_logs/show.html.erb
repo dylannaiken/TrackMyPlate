@@ -1,20 +1,61 @@
-<h1>Today</h1>
-
-
-<p>log_date : <%= @daily_log.log_date %></p>
-<p>remaining_calories : <%= @daily_log.remaining_calories %></p>
-<p>remaining_proteins :<%= @daily_log.remaining_proteins %></p>
-<p>remaining_carbs : <%= @daily_log.remaining_carbs %></p>
-<p>remaining_fats : <%= @daily_log.remaining_fats %></p>
-<p>remaining_water :<%= @daily_log.remaining_water %></p>
-
-<h2>Today's meal</h2>
-<ul>
-  <% @daily_log.meals.each do |meal| %>
-    <li>
-      <%= link_to "#{meal.meal_type}", daily_log_meal_path(@daily_log.id, meal.id) %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "Add a meal", new_daily_log_meal_path(@daily_log.id, @meal) %>
+<body>
+  <section id="remaining_calories"><% @daily_log.remaining_calories.round %></section>
+  <section id="daily_calorie_target"><% @user.goal.daily_calorie_target %></section>
+    <div class="container">
+        <header>
+            <h1><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1740221192/dish_f16ncn.png" alt="Logo"> TrackMyPlate</h1>
+            <p>Today</p>
+        </header>
+        <section class="calories">
+              <div>
+                <h2><%= @daily_log.remaining_calories.round %></h2>
+                <p>Calories left</p>
+              </div>
+              <div class="progress-container">
+                <svg width="120" height="120" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="10" fill="none" />
+                    <circle id="progress" cx="50" cy="50" r="40" stroke="#555" stroke-width="10" fill="none"
+                            stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2" />
+                </svg>
+              <div class="icon"><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604725/calories_xmrfkk.png"></div>
+              </div>
+        </section>
+        <section class="macros">
+            <div class="macro">
+                <p><%= @daily_log.remaining_proteins %> <br> Protein left</p>
+                <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/meat_zs6xru.png" alt="Protein">
+            </div>
+            <div class="macro">
+                <p><%= @daily_log.remaining_carbs %> <br> Carbs left</p>
+                <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/starch_cstc5l.png" alt="Carbs">
+            </div>
+            <div class="macro">
+                <p><%= @daily_log.remaining_fats %> <br> Fats left</p>
+                <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/fat_svz8zd.png" alt="Fats">
+            </div>
+        </section>
+        <section class="meals">
+        <p>Recently uploaded</p>
+            <div class="meal">
+              <% @daily_log.meals.each do |meal| %>
+                <img class="meal-image" src="https://images.services.kitchenstories.io/6glN_4JhpVS9aUiBS7JnGsuDULA=/3840x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R2568-photo-final-_0.jpg" alt="Carbonara">
+                <div class="meal-info">
+                    <div class="meal-header">
+                        <h3><%= link_to "#{meal.meal_type}", daily_log_meal_path(@daily_log.id, meal.id) %></h3>
+                        <span class="meal-time"><%= meal.eaten_at %></span>
+                    </div>
+                    <p class="meal-calories">
+                        <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604725/calories_xmrfkk.png" class="icons"> <%= meal.total_calories.round %> kcal
+                    </p>
+                    <div class="meal-macros">
+                        <p><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/meat_zs6xru.png" alt="Protein"> <%= meal.total_protein.round %>g</p>
+                        <p><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/starch_cstc5l.png" alt="Carbs"> <%= meal.total_carbs.round %>g</p>
+                        <p><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/fat_svz8zd.png" alt="Fats"> <%= meal.total_fat.round %>g</p>
+                    </div>
+                </div>
+              <% end %>
+            </div>
+        </section>
+        <button class="add-meal"><%= link_to "+", new_daily_log_meal_path(@daily_log.id, @meal) %></button>
+    </div>
+</body>
