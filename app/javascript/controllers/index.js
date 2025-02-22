@@ -2,3 +2,6 @@
 import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
+import NewMealController from "./new_meal_controller";
+application.register("new-meal", NewMealController);
+
