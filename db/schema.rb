@@ -113,6 +113,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_18_151517) do
     t.index ["food_id"], name: "index_nutritions_on_food_id"
   end
 
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.string "ingredients"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
