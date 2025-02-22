@@ -1,12 +1,61 @@
+/* Conteneur principal de la navbar */
 .navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+  position: fixed; /* Fixe la navbar en bas de l'écran */
+  bottom: 0; /* Colle la navbar tout en bas */
+  width: 100%; /* Prend toute la largeur */
+  background: white; /* Fond blanc pour rester visible */
+  border-top: 1px solid #ccc; /* Ajoute une ligne fine pour séparer la navbar du contenu */
+  z-index: 1000; /* Passe au-dessus des autres éléments */
+  display: flex;
+  justify-content: space-around; /* Répartit les éléments de façon équilibrée */
+  align-items: center; /* Centre les éléments verticalement */
+  padding: 5px 0; /* Ajoute un peu d'espace en haut et en bas */
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
+/* Logo de la navbar */
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 40px; /* Taille du logo */
+}
+
+/* Conteneur des liens */
+.navbar-lewagon .navbar-nav {
+  display: flex;
+  justify-content: space-around; /* Répartition équilibrée */
+  width: 100%; /* Prend toute la largeur disponible */
+}
+
+/* Style des liens */
+.navbar-lewagon .nav-link {
+  padding: 10px; /* Ajoute de l'espace autour des liens */
+  font-size: 14px; /* Taille de police */
+  color: #333; /* Couleur du texte */
+  text-decoration: none; /* Supprime le soulignement */
+  transition: color 0.3s ease; /* Animation douce au survol */
+}
+
+.navbar-lewagon .nav-link:hover {
+  color: #007bff; /* Change la couleur au survol */
+}
+
+/* Icônes de la navbar */
+.navbar-lewagon .avatar {
+  width: 30px; /* Taille des avatars */
+  height: 30px;
+  border-radius: 50%; /* Forme ronde */
+  object-fit: cover; /* Remplit bien l'espace */
+}
+
+/* Menu déroulant */
+.navbar-lewagon .dropdown-menu {
+  background: #fff; /* Fond blanc */
+  border: 1px solid #ccc; /* Bordure fine */
+}
+
+.navbar-lewagon .dropdown-item {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.navbar-lewagon .dropdown-item:hover {
+  background: #f8f9fa; /* Légère coloration au survol */
 }
