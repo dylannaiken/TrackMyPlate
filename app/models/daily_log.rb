@@ -19,8 +19,26 @@ class DailyLog < ApplicationRecord
   end
 
   def update_remaining_calories
-    consumed = total_calories
-    daily_target = user.goal.daily_calorie_target
-    update(remaining_calories: daily_target - consumed)
+    consumed1 = total_calories
+    daily_target1 = user.goal.daily_calorie_target
+    update(remaining_calories: daily_target1 - consumed1)
+  end
+
+  def update_remaining_protein
+    consumed = total_protein
+    daily_target = user.goal.protein_target
+    update(remaining_proteins: daily_target - consumed)
+  end
+
+  def update_remaining_carbs
+    consumed = total_carbs
+    daily_target = user.goal.carbs_target
+    update(remaining_carbs: daily_target - consumed)
+  end
+
+  def update_remaining_fat
+    consumed = total_fat
+    daily_target = user.goal.fat_target
+    update(remaining_fats: daily_target - consumed)
   end
 end
