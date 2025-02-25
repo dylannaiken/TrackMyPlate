@@ -1,0 +1,91 @@
+/* Profile Container */
+.profile-container {
+  display: flex;
+  justify-content: center; /* Centrer le formulaire horizontalement */
+  align-items: center; /* Centrer le formulaire verticalement */
+  min-height: 100vh; /* Assurer que le conteneur prend toute la hauteur de la fenêtre */
+  padding: 20px;
+}
+
+.profile-form {
+  width: 100%;
+  max-width: 800px; /* Limiter la largeur maximale du formulaire */
+  background-color: #f8f8f8;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.profile-container h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Form Elements */
+.profile-form div {
+  margin-bottom: 15px;
+}
+
+.profile-form label {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.profile-form input,
+.profile-form select,
+.profile-form button {
+  width: 100%; /* Assurer que les champs prennent toute la largeur disponible */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Submit Button */
+.profile-form button {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.profile-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Specific Styles for Input Types */
+.profile-form input[type="submit"],
+.profile-form input[type="number"],
+.profile-form select {
+  width: 100%; /* Assurer que tous les champs ont la même largeur */
+  box-sizing: border-box; /* Pour éviter que le padding dépasse la largeur du champ */
+}
+
+.profile-form .btn-secondary {
+  margin-top: 10px;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 20px;
+  }
+
+  .profile-form input,
+  .profile-form select,
+  .profile-form button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .profile-form input[type="submit"] {
+    font-size: 16px;
+  }
+}

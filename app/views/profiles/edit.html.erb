@@ -1,12 +1,54 @@
-<h1>Profile</h1>
-<ul>
-  <li>goal_type : <%= @goal.goal_type %></li>
-  <li>target_weight : <%= @goal.target_weight %></li>
-  <li>daily_calorie_target : <%= @goal.daily_calorie_target %></li>
-  <li>protein_target : <%= @goal.protein_target %></li>
-  <li>carbs_target : <%= @goal.carbs_target %></li>
-  <li>fat_target : <%= @goal.fat_target %></li>
-  <li>start_date : <%= @goal.start_date %></li>
-  <li>end_date : <%= @goal.end_date %></li>
-  <li>target_water : <%= @goal.target_water %></li>
-</ul>
+<h1>Modifier le profil</h1>
+
+<%= form_with model: @goal, url: goal_path(@goal), method: :patch, local: true do |form| %>
+  <div>
+    <%= form.label :goal_type, "Objectif" %>
+    <%= form.select :goal_type, [["Perte de poids", "lose_weight"], ["Prise de poids", "gain_weight"], ["Maintien", "maintain_weight"]], {}, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :target_weight, "Poids cible (kg)" %>
+    <%= form.number_field :target_weight, step: 0.1, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :daily_calorie_target, "Apport calorique journalier cible" %>
+    <%= form.number_field :daily_calorie_target, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :protein_target, "Objectif protéines (g)" %>
+    <%= form.number_field :protein_target, step: 0.1, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :carbs_target, "Objectif glucides (g)" %>
+    <%= form.number_field :carbs_target, step: 0.1, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :fat_target, "Objectif lipides (g)" %>
+    <%= form.number_field :fat_target, step: 0.1, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :start_date, "Date de début" %>
+    <%= form.date_field :start_date, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :end_date, "Date de fin" %>
+    <%= form.date_field :end_date, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :target_water, "Objectif eau (verres/jour)" %>
+    <%= form.number_field :target_water, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Enregistrer les modifications", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to "Retour au profil", user_profile_path(current_user.id), class: "btn btn-secondary" %>
