@@ -1,1 +1,9 @@
-// Specific CSS for your home-page
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .content {
+    font-size: 14px;
+  }
+}
