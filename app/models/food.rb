@@ -3,15 +3,9 @@ class Food < ApplicationRecord
   has_one :nutrition, dependent: :destroy
   has_one_attached :photo
 
-  after_save :update_daily_log_remaining_calories,
-             :update_daily_log_remaining_protein,
-             :update_daily_log_remaining_carbs,
-             :update_daily_log_remaining_fat
+  after_save :update_daily_log_remaining_nutrients
 
-  after_destroy :update_daily_log_remaining_calories,
-                :update_daily_log_remaining_protein,
-                :update_daily_log_remaining_carbs,
-                :update_daily_log_remaining_fat
+  after_destroy :update_daily_log_remaining_nutrients
 
   # enum serving_unit: {
   #   grams: 'grams'
@@ -23,19 +17,7 @@ class Food < ApplicationRecord
 
   private
 
-  def update_daily_log_remaining_calories
-    meal.daily_log.update_remaining_calories
-  end
-
-  def update_daily_log_remaining_protein
-    meal.daily_log.update_remaining_protein
-  end
-
-  def update_daily_log_remaining_carbs
-    meal.daily_log.update_remaining_carbs
-  end
-
-  def update_daily_log_remaining_fat
-    meal.daily_log.update_remaining_fat
+  def update_daily_log_remaining_nutrients
+    meal.daily_log.update_remaining_nutrients
   end
 end
