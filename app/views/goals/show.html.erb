@@ -1,145 +1,116 @@
-<div class="container my-4" data-controller="chart" data-chart-calorie-goal="<%= @goal.daily_calorie_target || 0 %>" data-chart-calories-consumed="<%= @goal.daily_calorie_target ? (@goal.daily_calorie_target - (@goal.daily_calorie_target * 0.28).to_i) : 0 %>">
-
+<div class="container my-4">
   <!-- Navigation (Daily/Weekly/Monthly) -->
   <div class="d-flex justify-content-around mb-3">
-    <%= link_to "Daily", "#" , class: "btn btn-outline-secondary active" %>
-    <%= link_to "Weekly", "#" , class: "btn btn-outline-secondary" %>
-    <%= link_to "Monthly", "#" , class: "btn btn-outline-secondary" %>
+    <button class="btn btn-outline-secondary active">Daily</button>
+    <button class="btn btn-outline-secondary">Weekly</button>
+    <button class="btn btn-outline-secondary">Monthly</button>
   </div>
 
   <!-- Calorie Goal Card -->
   <div class="card mb-3 p-3">
-    <div class="d-flex justify-content-between align-items-center">
-      <div>
-        <h5 class="mb-0">
-          <%= @goal.start_date.present? ? @goal.start_date.strftime("%B %d, %Y") : "No Start Date" %>
-        </h5>
-        <small class="text-muted">
-          Calorie Goal:
-          <%= @goal.daily_calorie_target.present? ? "#{@goal.daily_calorie_target} kcal" : "" %>
-        </small>
-      </div>
-      <div class="text-end">
-        <small class="text-muted">
-          Consumed:
-          <% consumed_calories = @goal.daily_calorie_target ? (@goal.daily_calorie_target - (@goal.daily_calorie_target * 0.28).to_i) : 0 %>
-          <%= consumed_calories %> kcal
-        </small>
-      </div>
-    </div>
-
-    <!-- Donut Chart for Calorie Consumption -->
-    <div class="mt-3">
-      <canvas id="calorieChart" data-chart-target="calorieChart" width="400" height="200"></canvas>
+    <h5 id="date">March 07, 2025</h5>
+    <small class="text-muted">Calorie Goal: <span id="goal">2000</span> kcal</small>
+    <small class="text-muted d-block">Consumed: <span id="consumed">1430</span> kcal</small>
+    
+    <div class="progress mt-2">
+      <div class="progress-bar" id="calorie-progress"></div>
     </div>
   </div>
 
-  <!-- Meal Distribution Card -->
-  <div class="card mb-3 p-3">
-    <div class="d-flex justify-content-between mb-2">
-      <div>
-        <strong>Breakfast</strong>
-        <small class="text-muted d-block">30% (220 kcal)</small>
-      </div>
-      <div>
-        <strong>Dinner</strong>
-        <small class="text-muted d-block">45% (400 kcal)</small>
-      </div>
-    </div>
-    <div class="d-flex justify-content-between">
-      <div>
-        <strong>Lunch</strong>
-        <small class="text-muted d-block">50% (440 kcal)</small>
-        <small class="text-muted d-block">Total calorie consumed</small>
-      </div>
-      <div class="text-end">
-        <small class="text-muted d-block">1200-1500</small>
-        <small class="text-muted">Expected</small>
-      </div>
-    </div>
+  <!-- Donut Chart -->
+  <div class="circle-container">
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <circle class="circle-progress-circle" cx="60" cy="60" r="50" fill="none" />
+      <circle class="circle-progress-value" cx="60" cy="60" r="50" fill="none"
+        stroke-dasharray="314" stroke-dashoffset="314"
+        transform="rotate(-90, 60, 60)" />
+      <text class="circle-progress-text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="22px" font-weight="bold" id="progress-text">0%</text>
+    </svg>
   </div>
 
-  <!-- Macronutrient Bar Chart -->
-    <div class="card p-3">
-      <canvas id="macroChart" data-chart-target="macroChart" width="400" height="200"></canvas>
-    </div>
+  <!-- Macronutrient Bars -->
+  <div class="card p-3">
+    <p>Protein: <span id="protein-consumed">35</span>g / <span id="protein-goal">80</span>g</p>
+    <div class="progress"><div class="progress-bar" id="protein-bar"></div></div>
 
-  <!-- Action Buttons -->
-  <div class="d-flex justify-content-between mt-3">
-    <%= link_to 'Edit Goal', edit_goal_path(@goal), class: "btn btn-primary" %>
-    <%= link_to 'Back', goals_path, class: "btn btn-secondary" %>
+    <p>Fats: <span id="fats-consumed">30</span>g / <span id="fats-goal">30</span>g</p>
+    <div class="progress"><div class="progress-bar" id="fats-bar"></div></div>
+
+    <p>Carbohydrates: <span id="carbs-consumed">30</span>g / <span id="carbs-goal">50</span>g</p>
+    <div class="progress"><div class="progress-bar" id="carbs-bar"></div></div>
   </div>
-
 </div>
 
+<style>
+  .progress {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: #3498db;
+  }
+  .circle-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .circle-progress-circle {
+    stroke-width: 6px;
+    stroke: hsla(0, 0.00%, 0.00%, 0.20);
+  }
+  .circle-progress-value {
+    stroke-width: 6px;
+    stroke: #3498db;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-in-out;
+  }
+  .circle-progress-text {
+    fill: black;
+  }
+</style>
+
 <script>
-  document.addEventListener('turbo:load', function() {
-    // Calorie Donut Chart
-    const calorieCtx = document.getElementById('calorieChart').getContext('2d');
-    const calorieGoal = <%= @goal.daily_calorie_target || 0 %>;
-    const caloriesConsumed = <%= @goal.daily_calorie_target ? (@goal.daily_calorie_target - (@goal.daily_calorie_target * 0.28).to_i) : 0 %>;
-    const caloriesRemaining = calorieGoal - caloriesConsumed;
+  function updateProgress() {
+    // Calorie data
+    const goal = parseInt(document.getElementById("goal").textContent);
+    const consumed = parseInt(document.getElementById("consumed").textContent);
+    const percent = Math.min((consumed / goal) * 100, 100); 
 
-    new Chart(calorieCtx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Consumed', 'Remaining'],
-        datasets: [{
-          data: [caloriesConsumed, caloriesRemaining],
-          backgroundColor: ['rgba(54, 162, 235, 0.8)', 'rgba(200, 200, 200, 0.8)'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          position: 'bottom',
-        },
-        title: {
-          display: true,
-          text: 'Calorie Consumption'
-        }
-      }
-    });
+    // Update calorie progress bar
+    document.getElementById("calorie-progress").style.width = percent + "%";
+    document.getElementById("calorie-progress").textContent = consumed + " kcal";
 
-    // Macronutrient Bar Chart
-    const macroCtx = document.getElementById('macroChart').getContext('2d');
-    new Chart(macroCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Protein', 'Fats', 'Carbohydrates'],
-        datasets: [{
-          label: 'Consumed',
-          data: [35, 30, 30], // Replace with actual data
-          backgroundColor: 'rgba(75, 192, 192, 0.8)',
-          borderWidth: 1
-        },
-        {
-          label: 'Target',
-          data: [80, 30, 50], // Replace with actual target data
-          backgroundColor: 'rgba(255, 99, 132, 0.8)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        },
-        legend: {
-          position: 'bottom'
-        },
-        title: {
-          display: true,
-          text: 'Macronutrient Breakdown (grams)'
-        }
-      }
+    // Update circle progress
+    const circle = document.querySelector(".circle-progress-value");
+    const circumference = 314; 
+    circle.style.strokeDashoffset = circumference - (circumference * percent / 100);
+    document.getElementById("progress-text").textContent = Math.round(percent) + "%";
+
+    // Macronutrient data
+    const macros = [
+      { consumed: "protein-consumed", goal: "protein-goal", bar: "protein-bar", color: "#000" },
+      { consumed: "fats-consumed", goal: "fats-goal", bar: "fats-bar", color: "gray" },
+      { consumed: "carbs-consumed", goal: "carbs-goal", bar: "carbs-bar", color: "#4b4b4b" }
+    ];
+
+    macros.forEach(macro => {
+      const consumed = parseInt(document.getElementById(macro.consumed).textContent);
+      const goal = parseInt(document.getElementById(macro.goal).textContent);
+      const percent = Math.min((consumed / goal) * 100, 100);
+
+      const bar = document.getElementById(macro.bar);
+      bar.style.width = percent + "%";
+      bar.style.backgroundColor = macro.color;
     });
-  });
+  }
+
+  updateProgress();
 </script>
