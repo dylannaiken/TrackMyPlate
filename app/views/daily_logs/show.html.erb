@@ -8,7 +8,11 @@
         </header>
         <section class="calories">
               <div>
-                <h2><%= @daily_log.remaining_calories.round %></h2>
+                <% calories_eat = 0 %>
+                <% @daily_log.meals.each do |meal| %>
+                  <% calories_eat += meal.total_calories.round %>
+                <% end %>
+                <h2><%= @daily_log.remaining_calories.round - calories_eat %></h2>
                 <p>Calories left</p>
               </div>
               <div class="progress-container">
@@ -21,16 +25,28 @@
               </div>
         </section>
         <section class="macros">
+            <% protein_eat = 0 %>
+                <% @daily_log.meals.each do |meal| %>
+                  <% protein_eat += meal.total_protein.round %>
+                <% end %>
+                <% carbs_eat = 0 %>
+                <% @daily_log.meals.each do |meal| %>
+                  <% carbs_eat += meal.total_carbs.round %>
+                <% end %>
+                <% fat_eat = 0 %>
+                <% @daily_log.meals.each do |meal| %>
+                  <% fat_eat += meal.total_fat.round %>
+                <% end %>
             <div class="macro">
-                <p><%= @daily_log.remaining_proteins %> <br> Protein left</p>
+                <p><%= @daily_log.remaining_proteins - protein_eat %> <br> Protein left</p>
                 <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/meat_zs6xru.png" alt="Protein">
             </div>
             <div class="macro">
-                <p><%= @daily_log.remaining_carbs %> <br> Carbs left</p>
+                <p><%= @daily_log.remaining_carbs - carbs_eat %> <br> Carbs left</p>
                 <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/starch_cstc5l.png" alt="Carbs">
             </div>
             <div class="macro">
-                <p><%= @daily_log.remaining_fats %> <br> Fats left</p>
+                <p><%= @daily_log.remaining_fats - fat_eat %> <br> Fats left</p>
                 <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/fat_svz8zd.png" alt="Fats">
             </div>
         </section>
