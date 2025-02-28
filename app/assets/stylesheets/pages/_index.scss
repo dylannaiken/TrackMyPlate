@@ -1,3 +1,4 @@
-// Import page-specific CSS files here.
-@import "home";
-@import "dailylog_show";
+@media screen and (max-width: 768px) {
+  @import "home";
+  @import "dailylog_show";
+}
