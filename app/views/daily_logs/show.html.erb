@@ -12,6 +12,7 @@
                 <% @daily_log.meals.each do |meal| %>
                   <% calories_eat += meal.total_calories.round %>
                 <% end %>
+                <% calories_eat = 0 %>
                 <h2><%= @daily_log.remaining_calories.round - calories_eat %></h2>
                 <p>Calories left</p>
               </div>
@@ -25,18 +26,24 @@
               </div>
         </section>
         <section class="macros">
-            <% protein_eat = 0 %>
+                <% protein_eat = 0 %>
                 <% @daily_log.meals.each do |meal| %>
                   <% protein_eat += meal.total_protein.round %>
                 <% end %>
+                <% protein_eat = 0 %>
+
                 <% carbs_eat = 0 %>
                 <% @daily_log.meals.each do |meal| %>
                   <% carbs_eat += meal.total_carbs.round %>
                 <% end %>
+                <% carbs_eat = 0 %>
+
                 <% fat_eat = 0 %>
                 <% @daily_log.meals.each do |meal| %>
                   <% fat_eat += meal.total_fat.round %>
                 <% end %>
+                <% fat_eat = 0 %>
+
             <div class="macro">
                 <p><%= @daily_log.remaining_proteins - protein_eat %> <br> Protein left</p>
                 <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/meat_zs6xru.png" alt="Protein">
