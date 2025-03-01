@@ -10,29 +10,29 @@
 <body>
 
   <div class="container">
-    <h1>Add a food</h1>
 
+    <form>
+        <h1 class="food-title">Add a food</h1>
 
-    <form action="#" method="POST">
+        <div class="form-group">
+            <label for="food-name">Food name</label>
+            <input type="text" id="food-name" name="food-name">
+        </div>
 
-      <div class="form-group">
-        <label for="food_name">Food name</label>
-        <input type="text" id="food_name" name="food_name" />
-      </div>
+        <div class="form-group">
+            <label for="serving-size">Serving size</label>
+            <input type="text" id="serving-size" name="serving-size">
+        </div>
 
-     <div class="form-group">
-        <label for="serving_size">Serving size</label>
-        <input type="number" id="serving_size" name="serving_size" />
-      </div>
+        <div class="form-group">
+            <label for="serving-unit">Serving unit</label>
+            <input type="text" id="serving-unit" name="serving-unit">
+        </div>
 
-       <div class="form-group">
-        <label for="serving_unit">Serving unit</label>
-        <input type="text" id="serving_unit" name="serving_unit" />
-      </div>
-
-      <button type="submit">Create Food</button>
+        <button type="submit">Create Food</button>
     </form>
-  </div>
 
+</div>
+  <button class="big-black-btn">Create Food</button>
 </body>
 </html>
