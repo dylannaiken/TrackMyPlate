@@ -3,8 +3,8 @@ class Meal < ApplicationRecord
   belongs_to :daily_log
   has_many :foods, dependent: :destroy
 
-  after_save :update_daily_log_remaining_calories
-  after_destroy :update_daily_log_remaining_calories
+  after_save :update_daily_log_remaining_nutrients
+  after_destroy :update_daily_log_remaining_nutrients
   enum meal_type: { breakfast: 0, lunch: 1, dinner: 2, snack: 3 }
 
   def total_calories
@@ -25,7 +25,7 @@ class Meal < ApplicationRecord
 
   private
 
-  def update_daily_log_remaining_calories
-    daily_log.update_remaining_calories
+  def update_daily_log_remaining_nutrients
+    daily_log.update_remaining_nutrients
   end
 end

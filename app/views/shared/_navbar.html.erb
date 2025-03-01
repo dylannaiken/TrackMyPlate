@@ -1,8 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,14 +9,18 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item" <%= 'active' if current_page?(daily_log_path(@current_daily_log)) %>>
-              <%= link_to "Home", daily_log_path(@current_daily_log), class: "nav-link" %>
-            </li>
-          <li class="nav-item">
-            <%= link_to "Profile", edit_user_profile_path(current_user.id, current_user.id), class: "nav-link" %>
+            <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/home_he5j7u.png"), daily_log_path(@current_daily_log), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Stats", goal_path(current_user), class: "nav-link" %>
+            <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740497500/catalogue_1_lbw9vn.png"), "#", class: "nav-link" %>
           </li>
+          <li class="nav-item">
+            <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/graph_tvenik.png"), goal_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740497500/profile-user_m09yqp.png"), edit_user_profile_path(current_user.id, current_user.id), class: "nav-link" %>
+          </li>
+
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
