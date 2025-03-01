@@ -4,54 +4,51 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 10px; /* Réduit le padding pour les petits écrans */
 }
 
 .profile-form {
   width: 100%;
-  max-width: 800px;
+  max-width: 400px; /* Adapte la largeur au format iPhone SE */
   background-color: #f8f8f8;
-  padding: 30px;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 15px; /* Coins plus arrondis pour un look moderne */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Title */
 .title {
   text-align: center;
-  color: noir; /* Pour voir si la classe est bien prise en compte */
-  font-size: 2em;
-  margin-top: 50px;
+  color: #333;
+  font-size: 1.5em; /* Taille de texte adaptée pour iPhone SE */
+  margin-bottom: 20px;
 }
-
 
 /* Form Elements */
 .profile-form div {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .profile-form label {
-  font-size: 16px;
+  font-size: 14px; /* Texte un peu plus petit pour bien tenir sur petit écran */
   color: #555;
-  margin-bottom: 5px;
 }
 
 .profile-form input,
 .profile-form select,
 .profile-form button {
-  width: 150;
+  width: 100%; /* S'assure que les champs prennent bien toute la largeur */
   padding: 10px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px; /* Coins arrondis pour uniformité */
   font-size: 14px;
-  color: #4f1a1a;
 }
 
-/* Submit Button */
 .profile-form button {
   background-color: #007bff;
   color: white;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -59,33 +56,20 @@
   background-color: #0056b3;
 }
 
-.profile-form input[type="submit"] {
-  font-size: 18px;
-  padding: 12px;
-}
-
-.profile-form .btn-secondary {
-  margin-top: 10px;
-}
-
 /* Responsive Design */
-@media (max-width: 768px) {
-  .profile-container {
-    padding: 10px;
-  }
-
+@media (max-width: 375px) { /* Pour iPhone SE */
   .profile-form {
-    padding: 20px;
+    padding: 15px;
   }
 
   .profile-form input,
   .profile-form select,
   .profile-form button {
-    font-size: 14px;
+    font-size: 13px; /* Encore un peu plus petit si besoin */
     padding: 8px;
   }
 
-  .profile-form input[type="submit"] {
-    font-size: 16px;
+  .title {
+    font-size: 1.2em;
   }
 }
