@@ -1,0 +1,52 @@
+// $progress-height: 20px;
+// $progress-radius: 10px;
+// $progress-bg: #ddd;
+// $progress-bar-color: #3498db;
+
+// .container {
+//   margin-top: 1rem;
+//   margin-bottom: 1rem;
+// }
+
+// .progress {
+//   width: 100%;
+//   height: $progress-height;
+//   background-color: $progress-bg;
+//   border-radius: $progress-radius;
+//   overflow: hidden;
+
+//   .progress-bar {
+//     height: 100%;
+//     text-align: center;
+//     color: white;
+//     font-size: 14px;
+//     line-height: $progress-height;
+//     background-color: $progress-bar-color;
+//   }
+// }
+
+// .circle-container {
+//   display: flex;
+//   justify-content: center;
+//   margin: 20px 0;
+// }
+
+// $circle-stroke-width: 6px;
+// $circle-stroke-bg: hsla(0, 0%, 0%, 0.2);
+// $circle-stroke-value: $progress-bar-color;
+
+// .circle-progress-circle {
+//   stroke-width: $circle-stroke-width;
+//   stroke: $circle-stroke-bg;
+// }
+
+// .circle-progress-value {
+//   stroke-width: $circle-stroke-width;
+//   stroke: $circle-stroke-value;
+//   stroke-linecap: round;
+//   transition: stroke-dashoffset 1s ease-in-out;
+// }
+
+// .circle-progress-text {
+//   fill: black;
+// }
