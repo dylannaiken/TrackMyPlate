@@ -1,27 +1,48 @@
+/* Définition des variables de couleurs */
+:root {
+  --red: #FD1015;
+  --blue: #0D6EFD;
+  --yellow: #FFC65A;
+  --orange: #E67E22;
+  --green: #1EDD88;
+  --gray: #0E0000;
+  --light-gray: #F4F4F4;
+}
+
+/* Définition des polices */
+body {
+  font-family: "Work Sans", "Helvetica", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Nunito", "Helvetica", sans-serif;
+}
+
 /* Profile Container */
 .profile-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 10px; /* Réduit le padding pour les petits écrans */
+  padding: 10px;
 }
 
 .profile-form {
   width: 100%;
-  max-width: 400px; /* Adapte la largeur au format iPhone SE */
-  background-color: #f8f8f8;
+  max-width: 400px;
+  background-color: var(--light-gray);
   padding: 20px;
-  border-radius: 15px; /* Coins plus arrondis pour un look moderne */
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Title */
 .title {
   text-align: center;
-  color: #333;
-  font-size: 1.5em; /* Taille de texte adaptée pour iPhone SE */
-  margin-bottom: 20px;
+  color: var(--gray);
+  font-size: 1.5em;
+  margin-bottom: -40px;
+  margin-top: 50px;
 }
 
 /* Form Elements */
@@ -30,22 +51,23 @@
 }
 
 .profile-form label {
-  font-size: 14px; /* Texte un peu plus petit pour bien tenir sur petit écran */
-  color: #555;
+  font-size: 14px;
+  color: var(--gray);
 }
 
 .profile-form input,
 .profile-form select,
 .profile-form button {
-  width: 100%; /* S'assure que les champs prennent bien toute la largeur */
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px; /* Coins arrondis pour uniformité */
+  border: 1px solid var(--gray);
+  border-radius: 8px;
   font-size: 14px;
 }
 
+/* Bouton */
 .profile-form button {
-  background-color: #007bff;
+  background-color: var(--blue); /* Bleu rempli */
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -53,11 +75,56 @@
 }
 
 .profile-form button:hover {
-  background-color: #0056b3;
+  background-color: var(--orange);
+}
+
+/* Couleur spécifique pour les contours des champs au focus */
+.profile-form input#goal:focus,
+.profile-form select#goal:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 10px var(--red);
+}
+
+.profile-form input#target_weight:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 10px var(--green);
+}
+
+.profile-form input#daily_calorie_target:focus {
+  border-color: var(--yellow);
+  box-shadow: 0 0 10px var(--yellow);
+}
+
+.profile-form input#protein_target:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 10px var(--orange);
+}
+
+.profile-form input#carbs_target:focus {
+  border-color: var(--gray);
+  box-shadow: 0 0 10px var(--gray);
+}
+
+.profile-form input#fat_target:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 10px var(--orange);
+}
+
+.profile-form input#start_date:focus,
+.profile-form input#end_date:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 10px var(--blue);
+}
+
+/* Effet de focus pour tous les autres champs */
+.profile-form input:focus,
+.profile-form select:focus,
+.profile-form button:focus {
+  outline: none;
 }
 
 /* Responsive Design */
-@media (max-width: 375px) { /* Pour iPhone SE */
+@media (max-width: 375px) {
   .profile-form {
     padding: 15px;
   }
@@ -65,7 +132,7 @@
   .profile-form input,
   .profile-form select,
   .profile-form button {
-    font-size: 13px; /* Encore un peu plus petit si besoin */
+    font-size: 13px;
     padding: 8px;
   }
 

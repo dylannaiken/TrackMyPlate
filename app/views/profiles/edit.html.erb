@@ -4,47 +4,47 @@
   <%= form_with model: @goal, url: goal_path(@goal), method: :patch, local: true, class: "profile-form" do |form| %>
     <div>
       <%= form.label :goal_type, "Goal" %>
-      <%= form.select :goal_type, [["Weight Loss", "lose_weight"], ["Weight Gain", "gain_weight"], ["Maintenance", "maintain_weight"]], {}, class: "form-control" %>
+      <%= form.select :goal_type, [["Weight Loss", "lose_weight"], ["Weight Gain", "gain_weight"], ["Maintenance", "maintain_weight"]], {}, class: "form-control", id: "goal" %>
     </div>
 
     <div>
       <%= form.label :target_weight, "Target Weight (kg)" %>
-      <%= form.number_field :target_weight, step: 0.1, class: "form-control" %>
+      <%= form.number_field :target_weight, step: 0.1, class: "form-control", id: "target_weight" %>
     </div>
 
     <div>
       <%= form.label :daily_calorie_target, "Daily Calorie Target" %>
-      <%= form.number_field :daily_calorie_target, class: "form-control" %>
+      <%= form.number_field :daily_calorie_target, class: "form-control", id: "daily_calorie_target" %>
     </div>
 
     <div>
       <%= form.label :protein_target, "Protein Target (g)" %>
-      <%= form.number_field :protein_target, step: 0.1, class: "form-control" %>
+      <%= form.number_field :protein_target, step: 0.1, class: "form-control", id: "protein_target" %>
     </div>
 
     <div>
       <%= form.label :carbs_target, "Carbohydrate Target (g)" %>
-      <%= form.number_field :carbs_target, step: 0.1, class: "form-control" %>
+      <%= form.number_field :carbs_target, step: 0.1, class: "form-control", id: "carbs_target" %>
     </div>
 
     <div>
       <%= form.label :fat_target, "Fat Target (g)" %>
-      <%= form.number_field :fat_target, step: 0.1, class: "form-control" %>
+      <%= form.number_field :fat_target, step: 0.1, class: "form-control", id: "fat_target" %>
     </div>
 
     <div>
       <%= form.label :start_date, "Start Date" %>
-      <%= form.date_field :start_date, class: "form-control" %>
+      <%= form.date_field :start_date, class: "form-control", id: "start_date" %>
     </div>
 
     <div>
       <%= form.label :end_date, "End Date" %>
-      <%= form.date_field :end_date, class: "form-control" %>
+      <%= form.date_field :end_date, class: "form-control", id: "end_date" %>
     </div>
 
     <div>
       <%= form.label :target_water, "Water Target (glasses/day)" %>
-      <%= form.number_field :target_water, class: "form-control" %>
+      <%= form.number_field :target_water, class: "form-control", id: "target_water" %>
     </div>
 
     <div>

@@ -12,15 +12,19 @@ class GoalsController < ApplicationController
     # @goal est déjà défini dans set_goal
   end
 
-  # Action pour mettre à jour les informations du profil
   def update
     if @goal.update(goal_params)
-      redirect_to user_profile_path(current_user.id), notice: 'Profil mis à jour avec succès.'
+      respond_to do |format|
+        format.html { redirect_to user_profile_path(current_user.id), notice: 'Profil mis à jour avec succès.' }
+        format.js
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.js { render :edit }
+      end
     end
   end
-
   private
 
   # Set goal pour récupérer l'objectif de l'utilisateur connecté
