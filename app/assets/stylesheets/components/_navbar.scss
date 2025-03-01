@@ -17,6 +17,11 @@
   width: 40px; /* Taille du logo */
 }
 
+.navbar-lewagon .nav-item img {
+  width: 60px;
+  height: 60px;
+}
+
 /* Conteneur des liens */
 .navbar-lewagon .navbar-nav {
   display: flex;
@@ -49,6 +54,8 @@
 .navbar-lewagon .dropdown-menu {
   background: #fff; /* Fond blanc */
   border: 1px solid #ccc; /* Bordure fine */
+  bottom: 100%;
+  top: auto;
 }
 
 .navbar-lewagon .dropdown-item {
