@@ -1,8 +1,29 @@
-<% @user = current_user %>
-<h1>Add a meal</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Meal</title>
 
-<%= simple_form_for [@daily_log, @meal] do |f| %>
-  <%= f.input :meal_type, collection: Meal.meal_types.keys.map { |keys| [keys.humanize, keys] }, prompt: "Sélectionnez..." %>
-  <%= f.input :eaten_at %>
-  <%= f.button :submit %>
-<% end %>
+</head>
+<body>
+
+<div class="container">
+    <h1>Add a meal</h1>
+    <p>Choose your meal type:</p>
+
+    <%= simple_form_for [@daily_log, @meal] do |f| %>
+      <%= f.input :meal_type, as: :radio_buttons, collection: Meal.meal_types.keys.map { |keys| [keys.humanize, keys] }, prompt: "Sélectionnez...", input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %>
+      <%= f.input :eaten_at, as: :time %>
+      <%= f.button :submit %>
+    <% end %>
+
+
+    <p>Eaten at:</p>
+
+    <button class="add-ingredient" data-action="click->navigation#goToIngredients">Add ingredient</button>
+
+</div>
+
+</body>
+</html>

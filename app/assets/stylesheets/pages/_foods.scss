@@ -20,30 +20,6 @@ html, body {
   align-items: center;
 }
 
-.container {
-  width: 375px;
-  height: 667px;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@media screen and (max-width: 375px) {
-  .container {
-    width: 100%;
-    height: 100vh;
-  }
-
-  input, button {
-    font-size: 14px;
-  }
-}
-
 h1 {
   text-align: center;
   font-size: 24px;
