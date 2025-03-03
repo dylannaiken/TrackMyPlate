@@ -54,9 +54,9 @@
     height: 100%;
     text-align: center;
     color: white;
-    font-size: 14px;
-    line-height: 20px;
-    background-color: #3498db;
+    font-size: 10px;
+    line-height: 25px;
+    background-color:$grey;
   }
   .circle-container {
     display: flex;
@@ -97,10 +97,11 @@
 
     // Macronutrient data
     const macros = [
-      { consumed: "protein-consumed", goal: "protein-goal", bar: "protein-bar", color: "#000" },
-      { consumed: "fats-consumed", goal: "fats-goal", bar: "fats-bar", color: "gray" },
-      { consumed: "carbs-consumed", goal: "carbs-goal", bar: "carbs-bar", color: "#4b4b4b" }
-    ];
+  { consumed: "protein-consumed", goal: "protein-goal", bar: "protein-bar", color: "#FD1015" }, // Rouge
+  { consumed: "fats-consumed", goal: "fats-goal", bar: "fats-bar", color: "#FF8C42" }, // Orange
+  { consumed: "carbs-consumed", goal: "carbs-goal", bar: "carbs-bar", color: "#ECD444" } // Jaune
+];
+
 
     macros.forEach(macro => {
       const consumed = parseInt(document.getElementById(macro.consumed).textContent);
