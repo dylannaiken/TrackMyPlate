@@ -1,5 +1,6 @@
 <br><br><br>
 <div class='d-flex justify-content-between align-items-center navbar-phone'>
+    <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/home_he5j7u.png"), daily_log_path(@current_daily_log), class: "img-fluid" %>
     <% if @current_daily_log.present? %>
       <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/home_he5j7u.png"), daily_log_path(@current_daily_log), class: "img-fluid" %>
     <% else %>

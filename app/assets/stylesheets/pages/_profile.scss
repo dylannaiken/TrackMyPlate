@@ -37,26 +37,23 @@
 
 .profile-form input,
 .profile-form select,
-.profile-form button {
+.profile-form .btn {
   width: 150;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
-  color: #808080;
+  color: #666;
 }
 
 /* Submit Button */
-.profile-form button {
-  background-color: #007bff;
+.profile-form .btn {
+  background-color: #333;
   color: white;
   font-size: 16px;
   cursor: pointer;
-}
-
-.profile-form button:hover {
-  background-color: #0056b3;
+  color: #fff;
 }
 
 .profile-form input[type="submit"] {
