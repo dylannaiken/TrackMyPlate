@@ -1,9 +1,26 @@
 <br><br><br>
-
 <div class='d-flex justify-content-between align-items-center navbar-phone'>
-    <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/home_he5j7u.png"), daily_log_path(@current_daily_log), class: "img-fluid" %>
+    <% if @current_daily_log.present? %>
+      <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/home_he5j7u.png"), daily_log_path(@current_daily_log), class: "img-fluid" %>
+    <% else %>
+      <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/home_he5j7u.png"), new_daily_log_path, class: "img-fluid" %>
+    <% end %>
 
     <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740497500/catalogue_1_lbw9vn.png"), "#", class: "img-fluid" %>
-    <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/graph_tvenik.png"), goal_path(current_user), class: "img-fluid" %>
-    <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740497500/profile-user_m09yqp.png"), edit_user_profile_path(current_user.id, current_user.id), class: "img-fluid" %>
+
+    <% if current_user.present? && current_user.goal.present? %>
+      <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/graph_tvenik.png"), goal_path(current_user.goal), class: "img-fluid" %>
+    <% else %>
+      <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740221200/graph_tvenik.png"), new_goal_path, class: "img-fluid" %>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <% if defined?(edit_user_profile_path) && defined?(new_user_profile_path) %>
+        <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740497500/profile-user_m09yqp.png"), edit_user_profile_path(current_user.id, 1), class: "img-fluid" %>
+      <% else %>
+        <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740497500/profile-user_m09yqp.png"), new_user_profile_path(current_user.id), class: "img-fluid" %>
+      <% end %>
+    <% else %>
+      <%= link_to image_tag("https://res.cloudinary.com/dz68ybmap/image/upload/v1740497500/profile-user_m09yqp.png"), new_user_session_path, class: "img-fluid" %>
+    <% end %>
 </div>
