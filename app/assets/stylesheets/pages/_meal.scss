@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  .meal-type {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  .meal-type button {
+    padding: 30px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+  }
+  .meal-type .active {
+    background-color: black;
+    color: white;
+  }
+  .add-ingredient {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+  }
+  
+  p {
+    font-weight: bold;
+  }
+  
+  h1 {
+    font-weight: 800;
+  }
+  
+  .meal-type button.active {
+    border-radius: 9999px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    min-height: 44px;
+  }
+  
+  .add-ingredient {
+    background-color: $red
+  }
+  
+  .add-ingredient:hover {
+    background-color: $green
+  }
