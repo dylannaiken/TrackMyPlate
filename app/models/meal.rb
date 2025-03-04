@@ -2,6 +2,7 @@ class Meal < ApplicationRecord
   belongs_to :user
   belongs_to :daily_log
   has_many :foods, dependent: :destroy
+  # has_one_attached :photo
 
   after_save :update_daily_log_remaining_nutrients
   after_destroy :update_daily_log_remaining_nutrients
