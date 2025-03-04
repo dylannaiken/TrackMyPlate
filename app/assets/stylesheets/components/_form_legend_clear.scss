@@ -8,3 +8,29 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  border-radius: 65rem;
+  padding: 0.3rem 0.7rem;
+  background-color: #f2f3f3;
+  color: black;
+  border: 1px solid white;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.tag-selector:checked + label {
+  background-color: $blue;
+  color: white;
+}
