@@ -59,13 +59,13 @@
         </section>
         <section class="meals">
         <p>Recently uploaded</p>
-            <div class="meal">
-              <% @daily_log.meals.each do |meal| %>
+            <% @daily_log.meals.each do |meal| %>
+              <div class="meal">
                 <img class="meal-image" src="https://images.services.kitchenstories.io/6glN_4JhpVS9aUiBS7JnGsuDULA=/3840x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R2568-photo-final-_0.jpg" alt="Carbonara">
                 <div class="meal-info">
                     <div class="meal-header">
                         <h3><%= link_to "#{meal.meal_type}", daily_log_meal_path(@daily_log.id, meal.id) %></h3>
-                        <span class="meal-time"><%= meal.eaten_at %></span>
+                        <span class="meal-time"><%= meal.eaten_at.strftime("%H:%M") %></span>
                     </div>
                     <p class="meal-calories">
                         <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604725/calories_xmrfkk.png" class="icons"> <%= meal.total_calories.round %> kcal
@@ -76,8 +76,8 @@
                         <p><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/fat_svz8zd.png" alt="Fats"> <%= meal.total_fat.round %>g</p>
                     </div>
                 </div>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
         </section>
         <button class="add-meal"><%= link_to "+", new_daily_log_meal_path(@daily_log.id, @meal) %></button>
     </div>

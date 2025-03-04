@@ -15,7 +15,7 @@ class GoalsController < ApplicationController
   # Action pour mettre à jour les informations du profil
   def update
     if @goal.update(goal_params)
-      redirect_to user_profile_path(current_user.id), notice: 'Profil mis à jour avec succès.'
+      redirect_to daily_log_path(current_user.id), notice: 'Profil mis à jour avec succès.'
     else
       render :edit
     end
