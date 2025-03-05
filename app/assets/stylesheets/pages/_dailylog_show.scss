@@ -211,9 +211,6 @@ height: 40px;
   width: 120px;
   height: 120px;
 }
-svgg {
-  transform: rotate(-90deg);
-}
 circle {
   transition: stroke-dashoffset 1s ease-in-out;
 }
@@ -223,4 +220,25 @@ circle {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
+}
+
+.idea-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.idea-icon {
+  display: inline-block;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.idea-icon:hover {
+  background-color: #0056b3;
 }

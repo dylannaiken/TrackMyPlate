@@ -12,6 +12,27 @@ window.Stimulus   = application
 export { application }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  const ideaButton = document.querySelector('.idea-icon');
+  const modal = document.getElementById('ideaPopup');
+  const closeButton = document.querySelector('.btn-close');
+
+  ideaButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    modal.style.display = 'block';
+  });
+
+  closeButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
+
 // document.addEventListener("DOMContentLoaded", function() {
 //   let photoTrigger = document.getElementById("photo-trigger");
 //   let photoInput = document.getElementById("photo-input");

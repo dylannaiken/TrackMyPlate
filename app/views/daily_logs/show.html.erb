@@ -79,6 +79,35 @@
               </div>
             <% end %>
         </section>
+        <div class="idea-button">
+        <%= link_to "#", class: "idea-icon", data: { bs_toggle: "modal", bs_target: "#ideaPopup" } do %>
+          <i class="fas fa-lightbulb"></i>
+        <% end %>
+        </div>
         <button class="add-meal"><%= link_to "+", new_daily_log_meal_path(@daily_log.id, @meal) %></button>
     </div>
 </body>
+
+<div class="modal fade" id="ideaPopup" tabindex="-1" aria-labelledby="ideaPopupLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ideaPopupLabel">Suggestion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% client = OpenAI::Client.new
+        chatgpt_response = client.chat(parameters: {
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: "Tu es un expert en nutrition. Ta tâche consiste à proposer des repas en fonction des calories, protéines, glucides, lipides restants et en fonction de son objectif. Voici les données: calories = #{@daily_log.remaining_calories}, protéines = #{@daily_log.remaining_proteins}, glucides = #{@daily_log.remaining_carbs}, lipides = #{@daily_log.remaining_fats}, objectif = #{@user.goal.goal_type}. Renvoie uniquement les repas avec des gros espaces pour plus de visibilité avec les données en premier et les repas avec les données du repas."}]
+        })
+        @content = chatgpt_response["choices"][0]["message"]["content"] %>
+
+      <%= @content %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
