@@ -6,3 +6,4 @@ import "bootstrap"
 // import "chartkick"
 // import "chart.js"
 // import "controllers/chart_controller"
+//= require bootstrap
