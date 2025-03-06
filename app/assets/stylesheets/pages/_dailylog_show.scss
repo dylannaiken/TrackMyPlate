@@ -224,21 +224,22 @@ circle {
 
 .idea-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 65px;
+  left: 15px;
   z-index: 1000;
 }
 
 .idea-icon {
-  display: inline-block;
+  display: block;
+  width: 60px;
+  height: 60px;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #333;
   color: white;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 30px;
   text-decoration: none;
-}
-
-.idea-icon:hover {
-  background-color: #0056b3;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(58, 63, 68, 0.5);
+  text-align: center;
 }
