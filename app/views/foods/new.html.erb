@@ -1,8 +1,21 @@
 <h1>Add a food</h1>
 
-<%= simple_form_for [@daily_log, @meal, @food], url: daily_log_meal_foods_path(@daily_log, @meal)             do |f| %>
+<%= simple_form_for [@daily_log, @meal, @food], url: daily_log_meal_foods_path(@daily_log, @meal) do |f| %>
   <%= f.input :food_name %>
   <%= f.input :serving_size %>
-  <%= f.input :serving_unit %>
-  <%= f.button :submit %>
+
+  <div class="form-group serving-unit-group">
+    <label class="form-label">Serving Unit</label>
+    <div class="serving-unit-options">
+      <% serving_units = ['g', 'kg', 'L', 'mL' , 'cups', 'pieces', 'slices', 'bars', 'squares'] %>
+      <% serving_units.each do |unit| %>
+        <div class="serving-unit-option">
+          <%= f.radio_button :serving_unit, unit, class: 'form-check-input' %>
+          <%= f.label "serving_unit_#{unit}", unit.capitalize, class: 'form-check-label' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= f.button :submit, class: 'add-ingredient' %>
 <% end %>
