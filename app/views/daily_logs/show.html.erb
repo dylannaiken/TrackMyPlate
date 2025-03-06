@@ -61,7 +61,25 @@
         <p>Recently uploaded</p>
             <% @daily_log.meals.each do |meal| %>
               <div class="meal">
-                <img class="meal-image" src="https://images.services.kitchenstories.io/6glN_4JhpVS9aUiBS7JnGsuDULA=/3840x0/filters:quality(80)/images.kitchenstories.io/wagtailOriginalImages/R2568-photo-final-_0.jpg" alt="Carbonara">
+              <% image = "" %>
+              <% if meal.foods.last.food_name == "Burger"
+                image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274747/burger_xwukmm.jpg"
+              elsif meal.foods.last.food_name == "Pancakes"
+                image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274694/panacakes_whyntg.jpg"
+              elsif meal.foods.last.food_name == "Salad"
+                image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274694/salad_rfh2oz.jpg"
+              elsif meal.foods.last.food_name == "Pasta"
+                image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274695/pasta_dljae6.jpg"
+              elsif meal.foods.last.food_name == "Pizza"
+                image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274696/pizza_ufpsjn.webp"
+              elsif meal.foods.last.food_name == "Fish"
+                image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274848/fish_jvzbzq.webp"
+              elsif meal.foods.last.food_name == "Steak"
+                image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274848/steak_bzlfoi.jpg"
+              elsif meal.foods.last.food_name == "Chicken"
+                image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274848/chicken_qs5cea.jpg"
+              end %>
+                <img class="meal-image" src= "<%= image %>" alt="Repas">
                 <div class="meal-info">
                     <div class="meal-header">
                         <h3><%= link_to "#{meal.meal_type}", daily_log_meal_path(@daily_log.id, meal.id) %></h3>

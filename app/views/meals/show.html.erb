@@ -1,7 +1,4 @@
-<h1>Meal Details</h1>
-
-<p>Meal Type: <%= @meal.meal_type %></p>
-<p>Eaten At: <%= @meal.eaten_at %></p>
+<h1><%= @meal.meal_type %> <%= @meal.eaten_at.strftime("%H:%M") %></h1>
 
 <h2>Foods in this Meal</h2>
 <ul>
@@ -13,6 +10,6 @@
   <% end %>
 </ul>
 
-<%= link_to "Add a food", new_daily_log_meal_food_path(@daily_log, @meal) %>
+<div class="a-meal"><%= link_to "Add a food", new_daily_log_meal_food_path(@daily_log, @meal) %></div>
 
-<%= link_to "Return to homepage", daily_log_path(@daily_log) %>
+<div class="a-meal"><%= link_to "Return to homepage", daily_log_path(@daily_log) %></div>
