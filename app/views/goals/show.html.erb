@@ -51,7 +51,6 @@
   }
   .progress-bar {
     height: 100%;
-    text-align: left;
     color: white;
     font-size: 10px;
     line-height: 25px;
@@ -68,7 +67,7 @@
   }
   .circle-progress-value {
     stroke-width: 6px;
-    stroke: #3498db;
+    stroke: #4e598c;
     stroke-linecap: round;
     transition: stroke-dashoffset 1s ease-in-out;
   }
@@ -85,8 +84,11 @@
     const percent = Math.min((consumed / goal) * 100, 100);
 
     // Update calorie progress bar
-    document.getElementById("calorie-progress").style.width = percent + "%";
-    document.getElementById("calorie-progress").textContent = consumed + " kcal";
+
+    // Update calorie progress bar
+    const progressBar = document.getElementById("calorie-progress");
+    progressBar.style.width = percent + "%";
+    progressBar.textContent = consumed + " kcal";
 
     // Update circle progress
     const circle = document.querySelector(".circle-progress-value");
@@ -96,9 +98,9 @@
 
     // Macronutrient data
     const macros = [
-  { consumed: "protein-consumed", goal: "protein-goal", bar: "protein-bar", color: "#FD1015" }, // Rouge
-  { consumed: "fats-consumed", goal: "fats-goal", bar: "fats-bar", color: "#FF8C42" }, // Orange
-  { consumed: "carbs-consumed", goal: "carbs-goal", bar: "carbs-bar", color: "#ECD444" } // Jaune
+  { consumed: "protein-consumed", goal: "protein-goal", bar: "protein-bar" },
+  { consumed: "fats-consumed", goal: "fats-goal", bar: "fats-bar"},
+  { consumed: "carbs-consumed", goal: "carbs-goal", bar: "carbs-bar" }
 ];
 
 
@@ -109,7 +111,15 @@
 
       const bar = document.getElementById(macro.bar);
       bar.style.width = percent + "%";
-      bar.style.backgroundColor = macro.color;
+      let color = "#999";
+      if (percent >= 100) {
+          color = "#333";
+      } else if (percent >= 75) {
+          color = "#333";
+      } else if (percent >= 50) {
+          color = "#555";
+      }
+      bar.style.backgroundColor = color;
     });
   }
 

@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1 class="h1-home">TrackMyPlate</h1>
+<p class="p-slogan">Track what you eat, balance your life.</p>
+
+<%# <p class="p-home">Imaginez une application <strong>simple</strong> et <strong>intuitive</strong> pour <strong>suivre</strong> tout ce que vous mangez, <strong>analyser</strong> votre consommation et <strong>améliorer</strong> vos habitudes alimentaires. Voici <strong>TrackMyPlate</strong>, votre compagnon <strong>quotidien</strong> de <strong>nutrition</strong>.</p> %>
+
+<div class="slider-container">
+    <div class="slider">
+        <div class="slide">
+            <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1741334974/slide_1_konu37.png" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1741334974/slide_2_b0w870.png" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1741334973/slide_3_xw7x5n.png" alt="Slide 3">
+        </div>
+    </div>
+    <button class="prev-btn">◄</button>
+    <button class="next-btn">►</button>
+    <%if current_user %>
+      <%= link_to "Start", edit_user_profile_path(current_user.id, 1), class: "nav-link btn-home" %>
+    <%else %>
+      <%= link_to "Start", new_user_session_path, class: "nav-link" %>
+    <%end %>
+</div>

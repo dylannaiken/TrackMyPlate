@@ -56,7 +56,7 @@ meal4 = Meal.find_or_create_by!(user: user1, daily_log: daily_logs[user1], meal_
 
 puts "Creating foods..."
 food1 = Food.find_or_create_by!(meal: meal1, food_name: "Poulet grillé", serving_size: 100, serving_unit: "g")
-food2 = Food.find_or_create_by!(meal: meal2, food_name: "Riz", serving_size: 200, serving_unit: "g")
+food2 = Food.find_or_create_by!(meal: meal2, food_name: "Burger", serving_size: 1, serving_unit: "pieces")
 food3 = Food.find_or_create_by!(meal: meal3, food_name: "Carbonara", serving_size: 249, serving_unit: "g")
 food4 = Food.find_or_create_by!(meal: meal4, food_name: "Burgouz", serving_size: 100, serving_unit: "g")
 
