@@ -12,6 +12,38 @@ window.Stimulus   = application
 export { application }
 
 
+//SLIDER
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+document.querySelector('.next-btn').addEventListener('click', () => {
+    if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+    } else {
+        currentSlide = 0;
+    }
+    updateSlider();
+});
+
+document.querySelector('.prev-btn').addEventListener('click', () => {
+    if (currentSlide > 0) {
+        currentSlide--;
+    } else {
+        currentSlide = totalSlides - 1;
+    }
+    updateSlider();
+});
+
+function updateSlider() {
+    const slider = document.querySelector('.slider');
+    slider.style.transform = `translateX(-${currentSlide * 33.333333333333333333}%)`;
+}
+
+
+
+
+//IDEA BUTTON
 document.addEventListener('DOMContentLoaded', function() {
   const ideaButton = document.querySelector('.idea-icon');
   const modal = document.getElementById('ideaPopup');
