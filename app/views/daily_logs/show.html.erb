@@ -62,23 +62,23 @@
             <% @daily_log.meals.each do |meal| %>
               <div class="meal">
               <% image = "" %>
-              <% if meal.foods.last.food_name == "Burger"
+              <% if meal.foods.any? && meal.foods.last.food_name == "Burger"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274747/burger_xwukmm.jpg"
-              elsif meal.foods.last.food_name == "Pancakes"
+              elsif meal.foods.any? && meal.foods.last.food_name == "Pancakes"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274694/panacakes_whyntg.jpg"
-              elsif meal.foods.last.food_name == "Salad"
+              elsif meal.foods.any? && meal.foods.last.food_name == "Salad"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274694/salad_rfh2oz.jpg"
-              elsif meal.foods.last.food_name == "Pasta"
+              elsif meal.foods.any? && meal.foods.last.food_name == "Pasta"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274695/pasta_dljae6.jpg"
-              elsif meal.foods.last.food_name == "Pizza"
+              elsif meal.foods.any? && meal.foods.last.food_name == "Pizza"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274696/pizza_ufpsjn.webp"
-              elsif meal.foods.last.food_name == "Fish"
+              elsif meal.foods.any? && meal.foods.last.food_name == "Fish"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274848/fish_jvzbzq.webp"
-              elsif meal.foods.last.food_name == "Steak"
+              elsif meal.foods.any? && meal.foods.last.food_name== "Steak"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274848/steak_bzlfoi.jpg"
-              elsif meal.foods.last.food_name == "Chicken"
+              elsif meal.foods.any? && meal.foods.last.food_name == "Chicken"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274848/chicken_qs5cea.jpg"
-              elsif meal.foods.last.food_name == "Kebab"
+              elsif meal.foods.any? && meal.foods.last.food_name == "Kebab"
                 image = "https://res.cloudinary.com/dz68ybmap/image/upload/v1741274694/lamb-shish-kebab-20_lhosbq.jpg"
               end %>
                 <img class="meal-image" src= "<%= image %>" alt="Repas">
