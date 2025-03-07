@@ -45,15 +45,15 @@
                 <% fat_eat = 0 %>
 
             <div class="macro">
-                <p><%= @daily_log.remaining_proteins - protein_eat %>g <br> Protein left</p>
+                <p><strong class="gbold"><%= @daily_log.remaining_proteins - protein_eat %>g </strong><br> Protein left</p>
                 <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/meat_zs6xru.png" alt="Protein">
             </div>
             <div class="macro">
-                <p><%= @daily_log.remaining_carbs - carbs_eat %>g <br> Carbs left</p>
+                <p><strong class="gbold"><%= @daily_log.remaining_carbs - carbs_eat %>g </strong><br> Carbs left</p>
                 <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/starch_cstc5l.png" alt="Carbs">
             </div>
             <div class="macro">
-                <p><%= @daily_log.remaining_fats - fat_eat %>g <br> Fats left</p>
+                <p><strong class="gbold"><%= @daily_log.remaining_fats - fat_eat %>g </strong><br> Fats left</p>
                 <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/fat_svz8zd.png" alt="Fats">
             </div>
         </section>

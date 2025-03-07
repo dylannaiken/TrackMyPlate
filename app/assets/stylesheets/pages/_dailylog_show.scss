@@ -18,14 +18,21 @@ header {
   margin-bottom: 30px;
 }
 
+header img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+}
+
 header h1 {
   font-size: 2.5em;
   margin-bottom: 5px;
 }
 
 header p {
-  color: #777;
+  color: #333;
   font-size: 1em;
+  padding-left: 10px;
 }
 
 section {
@@ -34,7 +41,7 @@ section {
 
 h2 {
   font-size: 2.5em;
-  font-weight: 600;
+  font-weight: 800;
   color: #333;
 }
 
@@ -42,12 +49,13 @@ h2 {
   display: flex;
   justify-content: space-around;
   font-size: 1.2em;
-  font-weight: 300;
+  font-weight: 600;
   color: #555;
-}
 
-.calories h2 {
-margin-left: 10px;
+  p {
+    color: #999;
+    font-weight: 100;
+  }
 }
 
 
@@ -78,8 +86,14 @@ margin-left: 10px;
 
 .macro p {
   font-size: 0.9em;
-  color: #666;
+  color: #999;
   margin-top: 5px;
+  font-weight: 300;
+  .gbold {
+    color: #333;
+    font-size: 1.1em;
+    font-weight: 750;
+  }
 }
 
 .meals {
@@ -202,10 +216,6 @@ width: 30px;
 height: 30px;
 }
 
-header img {
-width: 40px;
-height: 40px;
-}
 .progress-container {
   position: relative;
   width: 120px;
