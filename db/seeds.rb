@@ -51,20 +51,17 @@ end
 puts "Creating meals..."
 meal1 = Meal.find_or_create_by!(user: user1, daily_log: daily_logs[user1], meal_type: 0) { |m| m.eaten_at = Time.current }
 meal2 = Meal.find_or_create_by!(user: user2, daily_log: daily_logs[user2], meal_type: 1) { |m| m.eaten_at = Time.current }
-meal3 = Meal.find_or_create_by!(user: user1, daily_log: daily_logs[user1], meal_type: 0) { |m| m.eaten_at = Time.current }
 meal4 = Meal.find_or_create_by!(user: user1, daily_log: daily_logs[user1], meal_type: 0) { |m| m.eaten_at = Time.current }
 
 puts "Creating foods..."
 food1 = Food.find_or_create_by!(meal: meal1, food_name: "Poulet grillé", serving_size: 100, serving_unit: "g")
 food2 = Food.find_or_create_by!(meal: meal2, food_name: "Pancakes", serving_size: 3, serving_unit: "pieces")
-food3 = Food.find_or_create_by!(meal: meal3, food_name: "Carbonara", serving_size: 249, serving_unit: "g")
 food4 = Food.find_or_create_by!(meal: meal4, food_name: "Burgouz", serving_size: 100, serving_unit: "g")
 
 puts "Creating nutrition details..."
 {
   food1 => { calories: 300, protein: 35, carbs: 0, fat: 8, fiber: 0, sugar: 0, sodium: 500, cholesterol: 80, additional_nutrients: { iron: 2, vitamin_c: 0 } },
   food2 => { calories: 210, protein: 9, carbs: 30, fat: 6, fiber: 2, sugar: 0, sodium: 10, cholesterol: 0, additional_nutrients: { iron: 1, vitamin_c: 0 } },
-  food3 => { calories: 250, protein: 5, carbs: 55, fat: 1, fiber: 2, sugar: 0, sodium: 10, cholesterol: 0, additional_nutrients: { iron: 1, vitamin_c: 0 } },
   food4 => { calories: 300, protein: 35, carbs: 0, fat: 8, fiber: 0, sugar: 0, sodium: 500, cholesterol: 80, additional_nutrients: { iron: 2, vitamin_c: 0 } }
 }.each do |food, nutrition|
   Nutrition.find_or_create_by!(food: food) do |n|

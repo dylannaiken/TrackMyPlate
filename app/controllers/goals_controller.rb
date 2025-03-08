@@ -5,6 +5,7 @@ class GoalsController < ApplicationController
   # Action pour l'affichage du profil (montrer l'objectif)
   def show
     # @goal est déjà défini dans set_goal
+    @daily_log = DailyLog.find(params[:id])
   end
 
   # Action pour l'édition du profil (modifier l'objectif)

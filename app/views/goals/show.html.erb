@@ -9,9 +9,15 @@
   <!-- Calorie Goal Card -->
   <div class="card mb-3 p-3">
     <h5 id="date">March 07, 2025</h5>
+
+    <% calories_eat = 0 %>
+    <% @daily_log.meals.each do |meal| %>
+      <%# <% a = calories_eat %>
+      <% calories_eat = meal.total_calories.round %>
+    <% end %>
     <small class="text-muted">Calorie Goal: <span id="goal"><%= @goal.daily_calorie_target.round %></span> kcal</small>
     <% dailylog = DailyLog.find_by_id(current_user.id)  %>
-    <small class="text-muted d-block">Consumed: <span id="consumed"><%= @goal.daily_calorie_target.round - dailylog.remaining_calories %></span> kcal</small>
+    <small class="text-muted d-block">Consumed: <span id="consumed"><%= @daily_log.remaining_calories.round - calories_eat %></span> kcal</small>
 
     <div class="progress mt-2">
       <div class="progress-bar" id="calorie-progress"></div>
@@ -31,13 +37,28 @@
 
   <!-- Macronutrient Bars -->
   <div class="card p-3">
-    <p>Protein: <span id="protein-consumed"><%= @goal.protein_target - dailylog.remaining_proteins %></span>g / <span id="protein-goal"><%= @goal.protein_target %></span>g</p>
+
+  <% protein_eat = 0 %>
+  <% @daily_log.meals.each do |meal| %>
+    <% protein_eat = meal.total_protein.round %>
+  <% end %>
+
+  <% carbs_eat = 0 %>
+  <% @daily_log.meals.each do |meal| %>
+    <% carbs_eat = meal.total_carbs.round %>
+  <% end %>
+
+  <% fat_eat = 0 %>
+  <% @daily_log.meals.each do |meal| %>
+    <% fat_eat = meal.total_fat.round %>
+  <% end %>
+    <p>Protein: <span id="protein-consumed"><%= @daily_log.remaining_proteins - protein_eat %></span>g / <span id="protein-goal"><%= @goal.protein_target %></span>g</p>
     <div class="progress"><div class="progress-bar" id="protein-bar"></div></div>
 
-    <p>Fats: <span id="fats-consumed"><%= @goal.carbs_target - dailylog.remaining_carbs %></span>g / <span id="fats-goal"><%= @goal.carbs_target %></span>g</p>
+    <p>Fats: <span id="fats-consumed"><%= @daily_log.remaining_carbs - carbs_eat %></span>g / <span id="fats-goal"><%= @goal.carbs_target %></span>g</p>
     <div class="progress"><div class="progress-bar" id="fats-bar"></div></div>
 
-    <p>Carbohydrates: <span id="carbs-consumed"><%= @goal.fat_target - dailylog.remaining_fats %></span>g / <span id="carbs-goal"><%= @goal.fat_target %></span>g</p>
+    <p>Carbohydrates: <span id="carbs-consumed"><%= @daily_log.remaining_fats - fat_eat %></span>g / <span id="carbs-goal"><%= @goal.fat_target %></span>g</p>
     <div class="progress"><div class="progress-bar" id="carbs-bar"></div></div>
   </div>
 
