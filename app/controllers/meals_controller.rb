@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
   before_action :set_user
   before_action :set_meal, only: %i[show edit update destroy]
-  before_action :set_daily_log, only: %i[new create show]
+  before_action :set_daily_log, only: %i[new create show destroy]
   before_action :authenticate_user!
 
   def index
@@ -42,8 +42,9 @@ class MealsController < ApplicationController
   end
 
   def destroy
+    Rails.logger.debug "Parameters received: #{@meal}"
     @meal.destroy
-    redirect_to meals_path, notice: 'Meal was successfully deleted.'
+    redirect_to daily_log_path(@meal.daily_log), notice: 'Meal was successfully deleted.'
   end
 
   private
