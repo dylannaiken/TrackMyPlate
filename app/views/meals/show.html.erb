@@ -12,4 +12,6 @@
 
 <div class="a-meal"><%= link_to "Add a food", new_daily_log_meal_food_path(@daily_log, @meal) %></div>
 
+<%# <div class="a-meal"><%= button_to "Delete Meal", daily_log_meal_path(@daily_log, @meal), method: :delete, data: { confirm: 'Confirm?' }, class: "btn btn-primary"%>
+
 <div class="a-meal"><%= link_to "Return to homepage", daily_log_path(@daily_log) %></div>

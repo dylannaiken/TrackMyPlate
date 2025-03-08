@@ -7,3 +7,5 @@ import "bootstrap"
 // import "chart.js"
 // import "controllers/chart_controller"
 //= require bootstrap
+//= require rails-ujs
+//= require_tree .

@@ -10,10 +10,11 @@
               <div>
                 <% calories_eat = 0 %>
                 <% @daily_log.meals.each do |meal| %>
-                  <% calories_eat += meal.total_calories.round %>
+                  <%# <% a = calories_eat %>
+                  <% calories_eat = meal.total_calories.round %>
                 <% end %>
-                <% calories_eat = 0 %>
                 <h2><%= @daily_log.remaining_calories.round - calories_eat %></h2>
+                <% calories_eat = 0 %>
                 <p>Calories left</p>
               </div>
               <div class="progress-container">
@@ -28,21 +29,18 @@
         <section class="macros">
                 <% protein_eat = 0 %>
                 <% @daily_log.meals.each do |meal| %>
-                  <% protein_eat += meal.total_protein.round %>
+                  <% protein_eat = meal.total_protein.round %>
                 <% end %>
-                <% protein_eat = 0 %>
 
                 <% carbs_eat = 0 %>
                 <% @daily_log.meals.each do |meal| %>
-                  <% carbs_eat += meal.total_carbs.round %>
+                  <% carbs_eat = meal.total_carbs.round %>
                 <% end %>
-                <% carbs_eat = 0 %>
 
                 <% fat_eat = 0 %>
                 <% @daily_log.meals.each do |meal| %>
-                  <% fat_eat += meal.total_fat.round %>
+                  <% fat_eat = meal.total_fat.round %>
                 <% end %>
-                <% fat_eat = 0 %>
 
             <div class="macro">
                 <p><strong class="gbold"><%= @daily_log.remaining_proteins - protein_eat %>g </strong><br> Protein left</p>
@@ -56,6 +54,9 @@
                 <p><strong class="gbold"><%= @daily_log.remaining_fats - fat_eat %>g </strong><br> Fats left</p>
                 <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/fat_svz8zd.png" alt="Fats">
             </div>
+            <% protein_eat = 0 %>
+            <% carbs_eat = 0 %>
+            <% fat_eat = 0 %>
         </section>
         <section class="meals">
         <p>Recently uploaded</p>
