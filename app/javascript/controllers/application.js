@@ -65,6 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
+//PROGRESS
+
+
+
 // document.addEventListener("DOMContentLoaded", function() {
 //   let photoTrigger = document.getElementById("photo-trigger");
 //   let photoInput = document.getElementById("photo-input");

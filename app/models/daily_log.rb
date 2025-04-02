@@ -1,6 +1,11 @@
 class DailyLog < ApplicationRecord
   belongs_to :user
   has_many :meals, dependent: :destroy
+  validates :log_date, presence: true, uniqueness: true
+
+  def self.today_log
+    find_or_create_by(log_date: Date.today)
+  end
 
   def total_calories
     meals.sum(&:total_calories)

@@ -1,10 +1,13 @@
 <body>
-  <section id="remaining_calories"><% @daily_log.remaining_calories.round %></section>
-  <section id="daily_calorie_target"><% @user.goal.daily_calorie_target %></section>
+  <section id="daily_calorie_target"><%= @user.goal.daily_calorie_target %></section>
     <div class="container">
         <header>
             <h1><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1740221192/dish_f16ncn.png" alt="Logo"> TrackMyPlate</h1>
-            <p>Today</p>
+            <div class="head_water">
+              <p>Today</p>
+              <button class="water"><p><%= @user.goal.target_water %></p><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1740221172/water-glass_ftepct.png"></button>
+            </div>
+
         </header>
         <section class="calories">
               <div>
@@ -13,16 +16,29 @@
                   <%# <% a = calories_eat %>
                   <% calories_eat = meal.total_calories.round %>
                 <% end %>
-                <h2><%= @daily_log.remaining_calories.round - calories_eat %></h2>
+                <h2 id="remaining_calories"><%= @daily_log.remaining_calories.round - calories_eat %></h2>
                 <% calories_eat = 0 %>
                 <p>Calories left</p>
               </div>
+
+              <%#<div class="circle-container">
+              <svg width="120" height="120" viewBox="0 0 120 120">
+                <circle class="circle-progress-circle" cx="60" cy="60" r="50" fill="none" />
+                <circle class="circle-progress-value" cx="60" cy="60" r="50" fill="none"
+                  stroke-dasharray="314" stroke-dashoffset="314"
+                  transform="rotate(-90, 60, 60)" />
+                <text class="circle-progress-text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="22px" font-weight="bold" id="progress-text">0%</text>
+              </svg>
+              </div><%>
+
+
               <div class="progress-container">
-                <svg width="120" height="120" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="10" fill="none" />
-                    <circle id="progress" cx="50" cy="50" r="40" stroke="#555" stroke-width="10" fill="none"
-                            stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2" />
-                </svg>
+              <svg width="120" height="120" viewBox="0 0 120 120">
+                    <circle class="progress_circle" cx="60" cy="60" r="50" fill="none" />
+                    <circle class="progress_value" cx="60" cy="60" r="50" fill="none"
+                    stroke-dasharray="314" stroke-dashoffset="314"
+                    transform="rotate(90, 60, 60)" />
+              </svg>
               <div class="icon"><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604725/calories_xmrfkk.png"></div>
               </div>
         </section>
@@ -43,16 +59,43 @@
                 <% end %>
 
             <div class="macro">
-                <p><strong class="gbold"><%= @daily_log.remaining_proteins - protein_eat %>g </strong><br> Protein left</p>
-                <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/meat_zs6xru.png" alt="Protein">
+                <p><strong class="gbold" id="remaining_proteins"><%= @daily_log.remaining_proteins - protein_eat %>g </strong><br> Protein left</p>
+                <p class="d-none" id="goal_proteins"><%= @daily_log.remaining_proteins %></p>
+                <div class="progress-container-macro">
+                  <svg width="80" height="80" viewBox="0 0 80 80">
+                      <circle class="progress_circle_macro" cx="40" cy="40" r="30" fill="none" />
+                      <circle class="progress_value_macro" id="progress_value_protein" cx="40" cy="80" r="30" fill="none"
+                      stroke-dasharray="188" stroke-dashoffset="188"
+                      transform="rotate(90, 60, 60)" />
+                  </svg>
+                  <div class="icon_macro"><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1742139907/protein_red_b3c07w.png"></div>
+                </div>
             </div>
             <div class="macro">
-                <p><strong class="gbold"><%= @daily_log.remaining_carbs - carbs_eat %>g </strong><br> Carbs left</p>
-                <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/starch_cstc5l.png" alt="Carbs">
+                <p><strong class="gbold" id="remaining_carbs"><%= @daily_log.remaining_carbs - carbs_eat %>g </strong><br> Carbs left</p>
+                <p class="d-none" id="goal_carbs"><%= @daily_log.remaining_carbs %></p>
+                <div class="progress-container-macro">
+                  <svg width="80" height="80" viewBox="0 0 80 80">
+                      <circle class="progress_circle_macro" cx="40" cy="40" r="30" fill="none" />
+                      <circle class="progress_value_macro" id="progress_value_carbs" cx="40" cy="80" r="30" fill="none"
+                      stroke-dasharray="188" stroke-dashoffset="188"
+                      transform="rotate(90, 60, 60)" />
+                  </svg>
+                  <div class="icon_macro"><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1742139907/starch_orange_unshfa.png"></div>
+                </div>
             </div>
             <div class="macro">
-                <p><strong class="gbold"><%= @daily_log.remaining_fats - fat_eat %>g </strong><br> Fats left</p>
-                <img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1739604767/fat_svz8zd.png" alt="Fats">
+                <p><strong class="gbold" id="remaining_fats"><%= @daily_log.remaining_fats - fat_eat %>g </strong><br> Fats left</p>
+                <p class="d-none" id="goal_fats"><%= @daily_log.remaining_fats %></p>
+                <div class="progress-container-macro">
+                  <svg width="80" height="80" viewBox="0 0 80 80">
+                      <circle class="progress_circle_macro" cx="40" cy="40" r="30" fill="none" />
+                      <circle class="progress_value_macro" id="progress_value_fat" cx="40" cy="80" r="30" fill="none"
+                      stroke-dasharray="188" stroke-dashoffset="188"
+                      transform="rotate(90, 60, 60)" />
+                  </svg>
+                  <div class="icon_macro"><img src="https://res.cloudinary.com/dz68ybmap/image/upload/v1742139907/fat_blue_nsqlot.png"></div>
+                </div>
             </div>
             <% protein_eat = 0 %>
             <% carbs_eat = 0 %>
@@ -132,3 +175,81 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  function updateProgressCircle() {
+  // Calorie data
+  const goal = parseInt(document.getElementById("daily_calorie_target").textContent);
+  let consumed = parseInt(document.getElementById("remaining_calories").textContent);
+  consumed = goal - consumed
+  const percent = Math.min((consumed / goal) * 100, 100);
+
+  // Update circle progress
+  const circle = document.querySelector(".progress_value");
+  const circumference = 314;
+  circle.style.strokeDashoffset = circumference - (circumference * percent / 100);
+  }
+
+  function updateProgressCircleProtein() {
+  // Calorie data
+  const goal = parseInt(document.getElementById("goal_proteins").textContent);
+  let consumed = parseInt(document.getElementById("remaining_proteins").textContent);
+  consumed = goal - consumed
+  const percent = Math.min((consumed / goal) * 100, 100);
+
+  // Update circle progress
+  const circle = document.getElementById("progress_value_protein");
+  const circumference = 188;
+  circle.style.strokeDashoffset = circumference - (circumference * percent / 100);
+  }
+
+  function updateProgressCircleCarbs() {
+  // Calorie data
+  const goal = parseInt(document.getElementById("goal_carbs").textContent);
+  let consumed = parseInt(document.getElementById("remaining_carbs").textContent);
+  consumed = goal - consumed
+  const percent = Math.min((consumed / goal) * 100, 100);
+
+  // Update circle progress
+  const circle = document.getElementById("progress_value_carbs");
+  const circumference = 188;
+  circle.style.strokeDashoffset = circumference - (circumference * percent / 100);
+  }
+
+  function updateProgressCircleFat() {
+  // Calorie data
+  const goal = parseInt(document.getElementById("goal_fats").textContent);
+  let consumed = parseInt(document.getElementById("remaining_fats").textContent);
+  consumed = goal - consumed
+  const percent = Math.min((consumed / goal) * 100, 100);
+
+  // Update circle progress
+  const circle = document.getElementById("progress_value_fat");
+  const circumference = 188;
+  circle.style.strokeDashoffset = circumference - (circumference * percent / 100);
+  }
+
+  // WATER
+
+  const maxCountWater = document.querySelector(".water p").textContent;
+  let countWater = maxCountWater;
+  const buttonElementWater = document.querySelector(".water");
+
+  buttonElementWater.addEventListener("click", () => {
+    if (countWater <= maxCountWater) {
+        countWater = countWater - 1;
+        document.querySelector(".water p").textContent = `${countWater}`;
+        if (countWater === 0) {
+          buttonElementWater.disabled = true;
+        }
+    }
+  });
+
+
+updateProgressCircle();
+updateProgressCircleProtein();
+updateProgressCircleCarbs();
+updateProgressCircleFat();
+
+</script>

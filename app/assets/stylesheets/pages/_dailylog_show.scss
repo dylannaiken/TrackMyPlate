@@ -18,6 +18,43 @@ header {
   margin-bottom: 30px;
 }
 
+.head_water {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  img {
+    width: 10px;
+    height: 10px;
+    margin: auto;
+  }
+}
+
+.water {
+  padding: 5px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: #538FDC;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.2s ease-out;
+  display: flex;
+}
+
+.water:active {
+  transform: scale(1.2);
+}
+
+.water:disabled {
+  background-color: #538FDC;
+  cursor: not-allowed;
+}
+
 header img {
   width: 40px;
   height: 40px;
@@ -33,6 +70,7 @@ header p {
   color: #333;
   font-size: 1em;
   padding-left: 10px;
+  font-weight: 600;
 }
 
 section {
@@ -67,7 +105,7 @@ h2 {
 }
 
 .macro {
-  text-align: left;
+  text-align: center;
   flex: 1;
   padding: 15px;
   border-radius: 8px;
@@ -76,9 +114,9 @@ h2 {
 }
 
 .macro img {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 8px;
+  width: 20px;
+  height: 20px;
+  margin-top: -25px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -212,8 +250,16 @@ h2 {
 }
 
 .calories img {
-width: 30px;
-height: 30px;
+  width: 35px;
+  height: 35px;
+}
+
+svg {
+  margin-top: -10px;
+}
+
+#daily_calorie_target {
+  display: none;
 }
 
 .progress-container {
@@ -221,15 +267,62 @@ height: 30px;
   width: 120px;
   height: 120px;
 }
-circle {
+.progress_circle {
+  stroke-width: 14px;
+  stroke: #DDDD;
+}
+
+.progress_value {
+  stroke-width: 14px;
+  stroke: #333;
+  stroke-linecap: round;
   transition: stroke-dashoffset 1s ease-in-out;
 }
+
+.progress-container-macro {
+  position: relative;
+  width: 90px;
+  height: 90px;
+}
+.progress_circle_macro {
+  stroke-width: 8px;
+  stroke: #DDDD;
+}
+
+.progress_value_macro {
+  stroke-width: 8px;
+  stroke: #999;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+#progress_value_protein {
+  stroke: #DD6565;
+}
+
+#progress_value_carbs {
+  stroke: #DF9D6D;
+}
+
+#progress_value_fat {
+  stroke: #538FDC;
+}
+
 .icon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
+  margin-top: -10px;
+}
+
+.icon_macro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
 }
 
 .idea-button {
